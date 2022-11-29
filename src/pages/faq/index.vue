@@ -1,0 +1,56 @@
+<template>
+  <div class="p-4">
+    <h1 class="mb-4">سوالات متداول</h1>
+    <div v-for="(faq, index) in faqs" :key="index">
+      <details :class="[TheFaq.detail, 'relative']">
+        <summary class="w-width font-bold cursor-pointer">
+          {{ faq.question }}
+          <span class="absolute left-0 top-0 icon-plus text-primary"></span>
+        </summary>
+        <p class="mt-4 pr-2 opacity-60 border-r-4 border-solid border-primary">
+          {{ faq.answer }}
+        </p>
+        <span
+          class="bg-background absolute left-0 top-0 icon-minus text-primary"
+        ></span>
+      </details>
+      <hr class="my-4 opacity-50" />
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+import faqModel from "../../models/faq.model";
+
+const faqs = reactive<faqModel[]>([
+  {
+    question: "تاثیرات بی خوابی بر بدن چیست؟",
+    answer:
+      "از جمله تاثیرات بی خوابی در بدن میتوان به توهم شبانه اشاره کرد به این گونه که در هنگام کد زدن سایه هایی را در اطراف خود می بینید این سایه ها قصد بلعیدن شما را دارند",
+  },
+  {
+    question: "تاثیرات بی خوابی بر بدن چیست؟",
+    answer:
+      "از جمله تاثیرات بی خوابی در بدن میتوان به توهم شبانه اشاره کرد به این گونه که در هنگام کد زدن سایه هایی را در اطراف خود می بینید این سایه ها قصد بلعیدن شما را دارند",
+  },
+  {
+    question: "تاثیرات بی خوابی بر بدن چیست؟",
+    answer:
+      "از جمله تاثیرات بی خوابی در بدن میتوان به توهم شبانه اشاره کرد به این گونه که در هنگام کد زدن سایه هایی را در اطراف خود می بینید این سایه ها قصد بلعیدن شما را دارند",
+  },
+  {
+    question: "تاثیرات بی خوابی بر بدن چیست؟",
+    answer:
+      "از جمله تاثیرات بی خوابی در بدن میتوان به توهم شبانه اشاره کرد به این گونه که در هنگام کد زدن سایه هایی را در اطراف خود می بینید این سایه ها قصد بلعیدن شما را دارند",
+  },
+]);
+</script>
+<style lang="scss" module="TheFaq">
+.detail {
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+</style>

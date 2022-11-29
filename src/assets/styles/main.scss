@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url(./fonts.scss);
+@import url(./utilities.scss);
+@import url(./components.scss);
+@import url(./icons.scss);
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+    line-height: 1.5em;
+    transition: background-color 0.5s;
+    @apply select-none;
+  }
+
+  :root {
+    --color-primary: 247 147 34;
+    --color-text: 33 33 33;
+    --color-test: 240 240 240;
+    --color-background: 250 250 250;
+    --color-success: 0 200 81;
+    --color-info: 51 181 229;
+    --color-warn: 255 187 51;
+    --color-error: 254 78 78;
+  }
+
+  :root[data-mode="dark"] {
+    --color-primary: 250 161 56;
+    --color-text: 245 245 245;
+    --color-test: 33 33 33;
+    --color-background: 51 51 51;
+    --color-success: 0 126 51;
+    --color-info: 0 153 204;
+    --color-warn: 255 136 0;
+    --color-error: 204 0 0;
+  }
+
+  body {
+    font-family: "iransans";
+    color: rgb(var(--color-text));
+    background-color: rgb(var(--color-background));
+  }
+
+  h {
+    &1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 2em;
+    }
+    &2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    &3 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  p {
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  a {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @media print {
+    h {
+      &1 {
+        font-size: 36pt;
+        font-weight: 700;
+      }
+      &2 {
+        font-size: 24pt;
+        font-weight: 600;
+      }
+      &3 {
+        font-size: 18pt;
+        font-weight: 500;
+      }
+    }
+    p {
+      font-size: 12pt;
+      font-weight: 400;
+    }
+
+    a {
+      font-size: 14pt;
+      font-weight: 500;
+    }
+
+    blockquote {
+      font-size: 24pt;
+    }
+  }
+
+  @media (min-width: theme("screens.md")) {
+    h {
+      &1 {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      &2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      &3 {
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+    }
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    a {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    blockquote {
+      font-size: 24pt;
+    }
+  }
+}
