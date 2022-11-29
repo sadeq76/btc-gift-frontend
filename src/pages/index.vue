@@ -181,7 +181,7 @@
     </section>
   </div>
   <!-- Features Image Slider -->
-  <section class="p-4 sm:hidden">
+  <section class="p-4 w-full sm:hidden">
     <ImageSlider :features="features" />
   </section>
   <section class="w-full h-fit py-12 max-w-1366 px-8 max-sm:hidden">

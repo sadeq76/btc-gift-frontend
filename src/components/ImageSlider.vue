@@ -1,5 +1,9 @@
 <template>
-  <div v-for="(feature, index) in features" :key="index">
+  <div
+    class="w-full"
+    v-for="(feature, index) in features.slice(0, 1)"
+    :key="index"
+  >
     <div
       :class="[TheImageSlider.container, 'relative rounded-md overflow-hidden']"
     >
