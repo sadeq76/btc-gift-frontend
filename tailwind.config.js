@@ -47,6 +47,17 @@ module.exports = {
             transform: "translateX(0%)",
           },
         },
+        zoom: {
+          from: {
+            transform: "scale(.5) translateY(-50%)",
+            opacity: "0",
+            "transform-origin": "top",
+          },
+          to: {
+            transform: "scale(1) translateY(-50%)",
+            "transform-origin": "top",
+          },
+        },
       },
     },
     animation: {
@@ -57,6 +68,8 @@ module.exports = {
       bounce: "bounce 1s infinite",
       "move-in": "move 0.2s forwards ease-in",
       "move-out": "move 0.2s forwards ease-in reverse",
+      "zoom-in": "zoom 0.2s forwards ease-in",
+      "zoom-out": "zoom 0.2s forwards ease-in reverse",
     },
     aria: {
       checked: 'checked="true"',

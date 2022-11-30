@@ -12,7 +12,7 @@
           به یک هدیه عالی نیاز داری؟
           <br />
           به
-          <span class="bg-primary-gradient text-test px-2">بی تی سی گیفت</span>
+          <span class="text-primary px-2">بی تی سی گیفت</span>
           خوش آمدی
         </h1>
         <div class="flex flex-col items-center">
@@ -73,8 +73,8 @@
       'px-8 w-full flex flex-col max-sm:hidden max-w-1366',
     ]"
   >
-    <div class="grow flex justify-between items-center">
-      <div class="basis-1/2">
+    <div class="grow flex items-center">
+      <div class="w-1/2">
         <h1 class="mb-5">
           به یک هدیه عالی نیاز داری؟
           <br />
@@ -94,15 +94,12 @@
           </NuxtLink>
         </div>
       </div>
-      <img
-        class="basis-1/2 lg:w-full aspect-video"
-        src="~/assets/images/image1.jpg"
-      />
+      <img class="w-1/2 aspect-video" src="~/assets/images/image1.jpg" />
     </div>
     <div
       :class="[
         TheLanding['counter-card'],
-        'relative custom-shadow h-fit w-full py-16 px-32',
+        'relative custom-shadow h-fit w-full p-12 m-4',
       ]"
     >
       <dl class="flex justify-between items-center">
@@ -111,8 +108,8 @@
           :key="index"
           value="counter.value"
         >
-          <dt class="mb-2 text-2xl font-semibold">
-            <span class="text-primary text-5xl font-bold">
+          <dt class="mb-2 font-semibold">
+            <span class="ml-2 text-primary text-2xl font-bold">
               {{ counter.value }}
             </span>
             {{ counter.postfix }}

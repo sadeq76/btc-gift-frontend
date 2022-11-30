@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-4 w-full max-w-1366">
     <h1 class="mb-4">سوالات متداول</h1>
     <div v-for="(faq, index) in faqs" :key="index">
       <details :class="[TheFaq.detail, 'relative']">

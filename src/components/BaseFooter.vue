@@ -77,7 +77,6 @@ const pages = reactive<pageModel[]>([
   { title: "خانه", path: "/" },
   { title: "نحوه استفاده", path: "/how-to-use" },
   { title: "سوالات متداول", path: "/faq" },
-  { title: "ورود", path: "/login" },
 ]);
 const socialAccounts = [
   {

@@ -5,7 +5,7 @@
     :key="index"
   >
     <div
-      :class="[TheImageSlider.container, 'relative rounded-md overflow-hidden']"
+      :class="[ImageSlider.container, 'relative rounded-md overflow-hidden']"
     >
       <div class="bg-primary absolute top-0 right-0 bottom-0 left-0">
         <img
@@ -50,7 +50,7 @@ interface Props {
 
 const props = defineProps<Props>();
 </script>
-<style lang="scss" module="TheImageSlider">
+<style lang="scss" module="ImageSlider">
 .container {
   padding-top: 56%;
 }

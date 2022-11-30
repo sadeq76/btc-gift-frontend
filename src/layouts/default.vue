@@ -13,7 +13,7 @@
     <div class="flex items-center max-md:hidden">
       <NuxtLink
         class="mx-4"
-        v-for="(page, index) in pages.slice(0, 3)"
+        v-for="(page, index) in pages"
         :key="index"
         :to="page.path"
       >
@@ -34,7 +34,10 @@
       <span @click="changeMode" class="ml-8 cursor-pointer">{{
         modes.get(!darkMode)
       }}</span>
-      <span class="icon-user text-primary ml-4 cursor-pointer"></span>
+      <span
+        @click="openModal"
+        class="icon-user text-primary ml-4 cursor-pointer"
+      ></span>
       <button class="h-full primary-button whitespace-nowrap">ثبت سفارش</button>
     </div>
     <button @click="toggleMenu" class="icon-button sm:hidden">
@@ -75,12 +78,19 @@
         >
           <NuxtLink :to="page.path">{{ page.title }}</NuxtLink>
         </li>
+        <li
+          @click="openModal"
+          class="my-4 text-base cursor-pointer font-medium"
+        >
+          ورود
+        </li>
       </ul>
     </div>
   </transition>
 </template>
 
 <script lang="ts" setup>
+import { useModal } from "../composable/state";
 import pageModel from "../models/page.model";
 
 const isOpen = ref<boolean>(false);
@@ -88,7 +98,6 @@ const pages = reactive<pageModel[]>([
   { title: "خانه", path: "/" },
   { title: "نحوه استفاده", path: "/how-to-use" },
   { title: "سوالات متداول", path: "/faq" },
-  { title: "ورود", path: "/login" },
 ]);
 
 let darkMode = ref<boolean>(false);
@@ -108,6 +117,12 @@ const changeMode = function () {
 
 const toggleMenu = function () {
   isOpen.value = !isOpen.value;
+};
+
+const openModal = function () {
+  isOpen.value = false;
+  const isModalOpen = useModal();
+  isModalOpen.value = true;
 };
 </script>
 

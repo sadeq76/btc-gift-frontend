@@ -3,6 +3,7 @@
   <NuxtLoadingIndicator color="orange" />
   <div class="main flex flex-col items-center w-full overflow-hidden">
     <NuxtPage />
+    <LoginModal />
   </div>
 </template>
 
