@@ -12,7 +12,7 @@
     >
       <img
         class="w-full h-full object-cover rounded-lg"
-        :src="`btc-gift/assets/images/cards/${card.image}.png`"
+        :src="card.image"
         :alt="card.title"
       />
     </div>
@@ -20,38 +20,32 @@
 </template>
 <script lang="ts" setup>
 import cardModel from "../models/card.model";
+//@ts-ignore
+import blackCard from "../assets/images/cards/black.png";
+//@ts-ignore
+import diamondCard from "../assets/images/cards/diamond.png";
+//@ts-ignore
+import goldCard from "../assets/images/cards/gold.png";
 
 const cards: cardModel[] = [
   {
-    image: "black",
+    image: blackCard,
     title: "بلک کارت",
     description: "",
     price: 20000,
   },
   {
-    image: "diamond",
+    image: diamondCard,
     title: "کارت الماس",
     description: "",
     price: 20000,
   },
   {
-    image: "gold",
+    image: goldCard,
     title: "کارت طلایی",
     description: "",
     price: 20000,
   },
-  // {
-  //   image: "silver",
-  //   title: "کارت نقره ای",
-  //   description: "",
-  //   price: 20000,
-  // },
-  // {
-  //   image: "bronze",
-  //   title: "کارت برنزی",
-  //   description: "",
-  //   price: 20000,
-  // },
 ];
 </script>
 <style lang="scss" scoped>

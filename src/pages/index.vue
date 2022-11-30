@@ -189,11 +189,7 @@
       :dir="index % 2 !== 0 ? 'ltr' : 'rtl'"
     >
       <div :class="[TheLanding['img-container'], 'relative w-1/2']">
-        <img
-          class="aspect-video w-full"
-          :src="`btc-gift/assets/images/${item.image}.jpg`"
-          :alt="item.title"
-        />
+        <img class="aspect-video w-full" :src="item.image" :alt="item.title" />
       </div>
       <div class="mx-8 w-1/2 overflow-hidden">
         <h2>{{ item.title }}</h2>
@@ -269,6 +265,14 @@ import counterModel from "../models/counter.model";
 import whyusModel from "../models/whyus.model";
 import featureModel from "../models/feature.model";
 
+// images
+//@ts-ignore
+import image1 from "../assets/images/image1.jpg";
+//@ts-ignore
+import image2 from "../assets/images/image2.jpg";
+//@ts-ignore
+import image3 from "../assets/images/image3.jpg";
+
 const socialAccounts = [
   {
     name: "telegram",
@@ -314,12 +318,12 @@ const whyus = reactive<whyusModel[]>([
 ]);
 const features = reactive<featureModel[]>([
   {
-    image: "image1",
+    image: image1,
     title: "امکان سفارش هولدر با متن سفارشی",
     description: "",
   },
   {
-    image: "image2",
+    image: image2,
     title: "سرعت و سهولت سفارش",
     description:
       "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",

@@ -10,7 +10,7 @@
       <div class="bg-primary absolute top-0 right-0 bottom-0 left-0">
         <img
           class="w-full h-full aspect-video object-cover"
-          :src="`btc-gift/assets/images/${feature.image}.jpg`"
+          :src="feature.image"
           alt=""
         />
         <div
