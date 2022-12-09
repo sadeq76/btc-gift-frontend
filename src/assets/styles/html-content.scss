@@ -1,0 +1,26 @@
+.html-content {
+  ol {
+    counter-reset: section;
+    li {
+      margin-block: 1rem;
+    }
+    li::before {
+      counter-increment: section;
+      content: counter(section) ":";
+      color: rgb(var(--color-primary));
+      margin-left: 0.4rem;
+      font-size: 1.5rem;
+    }
+  }
+  ul {
+    counter-reset: section;
+    li {
+      margin-block: 1rem;
+      list-style: circle;
+    }
+    li::before {
+      counter-increment: none;
+      content: "";
+    }
+  }
+}

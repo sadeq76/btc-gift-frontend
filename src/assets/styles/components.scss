@@ -1,9 +1,9 @@
 .primary-button {
-  @apply px-4 py-2 bg-primary text-test rounded text-base shadow-sm shadow-primary text-center;
+  @apply px-4 py-2 bg-primary text-test rounded text-base shadow-sm shadow-primary text-center hover:bg-primary/80;
 }
 
 .secondary-button {
-  @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center;
+  @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80;
 }
 
 .icon-button {
@@ -22,4 +22,22 @@
 
 .router-link-active {
   @apply opacity-50;
+}
+
+.progress-bar {
+  width: 100%;
+  display: flex;
+  background-color: gainsboro;
+}
+.progress-bar::after {
+  content: "";
+  background-image: linear-gradient(
+    45deg,
+    rgb(var(--color-primary) / 0.85),
+    rgb(var(--color-primary) / 0.4)
+  );
+  height: 0.3rem;
+  width: 25%;
+  position: relative;
+  animation: gradient 5s linear forwards infinite;
 }

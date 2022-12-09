@@ -2,10 +2,10 @@
   <nav
     :class="[
       TheLayout.navbar,
-      'fixed top-0 z-20 px-4 py-2 bg-white dark:bg-test custom-shadow w-full flex justify-between',
+      'fixed top-0 z-20 px-4 py-2 bg-white dark:bg-test shadow w-full flex justify-between',
     ]"
   >
-    <a class="h-full flex items-center sm:basis-1/6" href="/" target="_self">
+    <a class="h-full flex items-center md:basis-1/6" href="/" target="_self">
       <img class="h-full" src="../assets/images/logo.png" alt="btc-gift" />
       <span class="pr-4 truncate">بی تی سی گیفت</span>
     </a>
@@ -27,7 +27,7 @@
         flex
         justify-end
         items-center
-        sm:basis-1/6
+        md:basis-1/6
         max-md:hidden
       "
     >
@@ -38,9 +38,14 @@
         @click="openModal"
         class="icon-user text-primary ml-4 cursor-pointer"
       ></span>
-      <button class="h-full primary-button whitespace-nowrap">ثبت سفارش</button>
+      <button
+        @click="goToOrderPage"
+        class="h-full primary-button whitespace-nowrap"
+      >
+        ثبت سفارش
+      </button>
     </div>
-    <button @click="toggleMenu" class="icon-button sm:hidden">
+    <button @click="toggleMenu" class="icon-button md:hidden">
       <span class="icon-bars"></span>
     </button>
   </nav>
@@ -90,8 +95,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from "vue-router";
 import { useModal } from "../composable/state";
 import pageModel from "../models/page.model";
+
+const router = useRouter();
 
 const isOpen = ref<boolean>(false);
 const pages = reactive<pageModel[]>([
@@ -123,6 +131,10 @@ const openModal = function () {
   isOpen.value = false;
   const isModalOpen = useModal();
   isModalOpen.value = true;
+};
+
+const goToOrderPage = function () {
+  router.push("order/create");
 };
 </script>
 

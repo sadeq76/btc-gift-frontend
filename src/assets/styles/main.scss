@@ -5,6 +5,7 @@
 @import url(./utilities.scss);
 @import url(./components.scss);
 @import url(./icons.scss);
+@import url(./html-content.scss);
 
 @layer base {
   * {
@@ -16,6 +17,12 @@
     line-height: 1.5em;
     transition: background-color 0.5s;
     @apply select-none;
+  }
+
+  video,
+  img {
+    max-width: 100%;
+    @apply rounded-md;
   }
 
   :root {

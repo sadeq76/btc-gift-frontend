@@ -2,7 +2,7 @@
   <div
     :class="[
       BaseModal.container,
-      'fixed p-8 top-1/2 -translate-y-1/2 rounded-md z-50 custom-shadow bg-background flex flex-col',
+      'fixed p-8 top-1/2 -translate-y-1/2 rounded-md z-50 shadow bg-background flex flex-col',
     ]"
   >
     <span
@@ -82,6 +82,7 @@ onBeforeUnmount(() => {
       height: 100%;
       min-height: 100%;
       max-height: 100%;
+      border-radius: 0;
     }
   }
 }

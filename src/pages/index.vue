@@ -73,7 +73,7 @@
       'px-8 w-full flex flex-col max-sm:hidden max-w-1366',
     ]"
   >
-    <div class="grow flex items-center">
+    <div class="grow overflow-hidden flex items-center">
       <div class="w-1/2">
         <h1 class="mb-5">
           به یک هدیه عالی نیاز داری؟
@@ -94,12 +94,15 @@
           </NuxtLink>
         </div>
       </div>
-      <img class="w-1/2 aspect-video" src="~/assets/images/image1.jpg" />
+      <img
+        class="w-1/2 aspect-video max-lg:aspect-9/16"
+        src="~/assets/images/image1.jpg"
+      />
     </div>
     <div
       :class="[
         TheLanding['counter-card'],
-        'relative custom-shadow h-fit w-full p-12 m-4',
+        'relative shadow h-fit w-full p-12 my-4',
       ]"
     >
       <dl class="flex justify-between items-center">
@@ -198,64 +201,7 @@
     </div>
   </section>
   <!-- Contact us -->
-  <section class="w-full h-max bg-test shadow-lg shadow-background flex">
-    <form
-      class="p-4 sm:basis-1/2 sm:px-8 lg:px-14"
-      @submit.prevent="sendMessage"
-    >
-      <h2>با ما در ارتباط باشید ...</h2>
-      <input
-        v-model="name"
-        dir="rtl"
-        type="text"
-        name="fullname"
-        id="fullname"
-        placeholder="نام کامل"
-        aria-label="نام کامل"
-        class="text-field w-full mt-4"
-        required
-      />
-      <input
-        v-model="email"
-        dir="rtl"
-        type="email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-        name="email"
-        id="email"
-        placeholder="ایمیل"
-        aria-label="ایمیل"
-        class="text-field w-full mt-4"
-        required
-      />
-      <textarea
-        v-model="message"
-        dir="rtl"
-        name="message"
-        id="message"
-        rows="5"
-        placeholder="پیام خود را وارد کنید ..."
-        aria-label="پیام"
-        class="textarea w-full mt-4"
-        required
-      ></textarea>
-      <div class="flex mt-8">
-        <button
-          class="ml-2 w-full secondary-button flex justify-center items-center"
-        >
-          <span class="icon-upload text-primary ml-2"></span>
-          آپلود فایل
-        </button>
-        <button class="w-full primary-button">ارسال پیام</button>
-      </div>
-    </form>
-    <div class="basis-1/2 bg-overlay max-sm:hidden">
-      <!-- <img
-        class="w-full h-full object-cover"
-        src="~/assets/images/image3.jpg"
-        alt="contact us"
-      /> -->
-    </div>
-  </section>
+  <ContactUs />
   <!-- Footer -->
   <BaseFooter></BaseFooter>
 </template>
@@ -329,12 +275,6 @@ const features = reactive<featureModel[]>([
       "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
   },
 ]);
-
-const name = ref<string>("");
-const email = ref<string>("");
-const message = ref<string>("");
-
-const sendMessage = () => {};
 </script>
 <style lang="scss" module="TheLanding">
 .hero-section {

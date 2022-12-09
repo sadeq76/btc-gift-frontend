@@ -1,6 +1,17 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiBase: "",
+    },
+  },
+
   srcDir: "src/",
+
+  appConfig: {
+    baseApi: "www.api.btcgift.shop/",
+  },
+
   app: {
     buildAssetsDir: "btc-gift/",
     head: {
@@ -18,11 +29,6 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/styles/main.scss"],
 
-  runtimeConfig: {
-    public: {
-      apiBase: "www.api.btcgift.shop",
-    },
-  },
   postcss: {
     plugins: {
       "postcss-import": {},
@@ -31,6 +37,6 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  ssr: false,
-  nitro: { prerender: { routes: ["/"] } },
+
+  nitro: { prerender: { routes: ["/", "/how-to-use"] } },
 });

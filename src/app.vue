@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout />
   <NuxtLoadingIndicator color="orange" />
-  <div class="main flex flex-col items-center w-full overflow-hidden">
+  <div class="main flex flex-col items-center w-full overflow-x-hidden">
     <NuxtPage />
     <LoginModal />
   </div>
