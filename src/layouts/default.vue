@@ -102,13 +102,21 @@ import pageModel from "../models/page.model";
 const router = useRouter();
 
 const isOpen = ref<boolean>(false);
+
+onMounted(() => {
+  darkMode.value =
+    document.documentElement.getAttribute("data-mode") === "dark"
+      ? true
+      : false;
+});
+
 const pages = reactive<pageModel[]>([
   { title: "خانه", path: "/" },
   { title: "نحوه استفاده", path: "/how-to-use" },
   { title: "سوالات متداول", path: "/faq" },
 ]);
 
-let darkMode = ref<boolean>(false);
+let darkMode = ref<boolean>(true);
 const modes = new Map();
 modes.set(false, "light");
 modes.set(true, "dark");

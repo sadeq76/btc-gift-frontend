@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     buildAssetsDir: "btc-gift/",
     head: {
       title: "BTC-Gift",
-      htmlAttrs: { dir: "rtl", lang: "fa", "data-mode": "light" },
+      htmlAttrs: { dir: "rtl", lang: "fa" },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
       noscript: [
         {
@@ -38,5 +38,5 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: { prerender: { routes: ["/", "/how-to-use"] } },
+  nitro: { prerender: { routes: ["/"] } },
 });

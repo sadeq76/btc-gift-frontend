@@ -81,7 +81,7 @@ module.exports = {
       "move-out": "move 0.2s forwards ease-in reverse",
       "zoom-in": "zoom 0.2s forwards ease-in",
       "zoom-out": "zoom 0.2s forwards ease-in reverse",
-      gradient: "gradient 5s linear forwards infinite",
+      gradient: "gradient 1s linear forwards infinite",
     },
     aria: {
       checked: 'checked="true"',
