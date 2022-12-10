@@ -1,41 +1,60 @@
-.primary-button {
-  @apply px-4 py-2 bg-primary text-test rounded text-base shadow-sm shadow-primary text-center border-primary border-2 hover:bg-primary/80 hover:border-primary/80;
-}
+@layer components {
+  .primary-button {
+    @apply px-4 py-2 bg-primary text-test rounded text-base shadow-sm shadow-primary text-center border-primary border-2 hover:bg-primary/80 hover:border-primary/80;
+  }
 
-.secondary-button {
-  @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80;
-}
+  .secondary-button {
+    @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80;
+  }
 
-.icon-button {
-  @apply px-0 bg-transparent text-primary text-center;
-}
+  .icon-button {
+    @apply px-0 bg-transparent text-primary text-center;
+  }
 
-.text-field {
-  @apply px-4 py-2 bg-background text-text rounded resize-none focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success;
-  border: solid 1.5px rgb(var(--color-text) / 0.2);
-}
+  .text-field {
+    @apply px-4 py-2 bg-background text-text rounded resize-none focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success;
+    border: solid 1.5px rgb(var(--color-text) / 0.2);
+  }
 
-.textarea {
-  @apply px-4 py-2 bg-background text-text rounded focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success  focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success resize-none;
-  border: solid 1.5px rgb(var(--color-text) / 0.2);
-}
+  .textarea {
+    @apply px-4 py-2 bg-background text-text rounded focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success  focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success resize-none;
+    border: solid 1.5px rgb(var(--color-text) / 0.2);
+  }
 
-.router-link-active {
-  @apply opacity-50;
-}
+  .table {
+    @apply w-full  rounded;
 
-.progress-bar {
-  @apply bg-overlay/10 flex w-full;
-  --width-progress-bar: 0;
-}
-.progress-bar::after {
-  @apply animate-gradient;
-  content: "";
-  background-image: linear-gradient(
-    45deg,
-    rgb(var(--color-primary) / 0.85),
-    rgb(var(--color-primary) / 0.4)
-  );
-  height: 0.3rem;
-  width: var(--width-progress-bar);
+    tr {
+      @apply flex justify-between p-2 m-2 rounded-md;
+
+      th,
+      td {
+        @apply text-ellipsis;
+      }
+    }
+
+    tr:nth-child(2n) {
+      background-color: rgb(var(--color-test) / 0.5);
+    }
+  }
+
+  .router-link-active {
+    @apply opacity-50;
+  }
+
+  .progress-bar {
+    @apply bg-overlay/10 flex w-full fixed;
+    --width-progress-bar: 0;
+  }
+  .progress-bar::after {
+    @apply animate-gradient;
+    content: "";
+    background-image: linear-gradient(
+      45deg,
+      rgb(var(--color-primary) / 0.85),
+      rgb(var(--color-primary) / 0.4)
+    );
+    height: 0.3rem;
+    width: var(--width-progress-bar);
+  }
 }

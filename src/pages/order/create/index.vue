@@ -43,36 +43,6 @@
       ></textarea>
     </div>
     <div class="w-full flex flex-wrap" v-if="step == 2">
-      <div class="w-1/2 sm:pl-4 max-sm:w-full">
-        <input
-          dir="rtl"
-          type="text"
-          name="fullname"
-          id="fullname"
-          placeholder="شماره تماس"
-          aria-label="شماره تماس"
-          class="text-field w-full"
-          required
-          oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
-          oninput="this.setCustomValidity('')"
-        />
-      </div>
-      <div class="w-1/2 max-sm:mt-4 max-sm:w-full">
-        <input
-          dir="rtl"
-          type="text"
-          name="fullname"
-          id="fullname"
-          placeholder="کد ارسالی"
-          aria-label="کد ارسالی"
-          class="text-field w-full"
-          required
-          oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
-          oninput="this.setCustomValidity('')"
-        />
-      </div>
-    </div>
-    <div class="w-full flex flex-wrap" v-if="step == 3">
       <textarea
         dir="rtl"
         name="message"
@@ -126,7 +96,12 @@
         oninput="this.setCustomValidity('')"
       />
     </div>
-
+    <table class="table shadow" v-if="step == 3">
+      <tr v-for="(value, key, index) in information" :key="index">
+        <th>{{ translateKey(key) }}</th>
+        <td>{{ value }}</td>
+      </tr>
+    </table>
     <div class="w-full flex justify-end mt-8">
       <button
         v-if="step !== 1"
@@ -142,10 +117,22 @@
   </form>
 </template>
 <script lang="ts" setup>
-import { describe } from "node:test";
+import { orderDetailsModel } from "../../../models/order-details.model";
+import { translateKey } from "~/composable/helpers";
 
+const information = reactive<orderDetailsModel>({
+  fullName: "s",
+  type: "sd",
+  message: "ad",
+  zipCode: "asd",
+  receiverName: "gfg",
+  receiverPhone: "asds",
+  address: "asdds",
+  status: "sad",
+  price: 0,
+});
 const progress = ref<HTMLDivElement>();
-const baseValue = 33.33;
+const baseValue = 50;
 const progressBarWidth = ref<number>(0);
 const goToPreviousStep = (): void => {
   if (progressBarWidth.value > 0) {
@@ -160,13 +147,9 @@ const goToNextStep = (): void => {
 const step = computed((): number => progressBarWidth.value / baseValue + 1);
 
 const description = computed((): string =>
-  step.value == 1
-    ? "لطفا فرم زیر را کامل کنید سپس روی دکمه ادامه کلیک کنید"
-    : step.value == 2
-    ? "لطفا شماره تماس خود را وارد کنید سپس کد ارسالی را وارد کنید"
-    : step.value == 3
-    ? "لطفا فرم زیر را کامل کنید سپس روی دکمه ادامه کلیک کنید "
-    : "لطفا اطلاعات زیر را بررسی و در صورت عدم وجود خطا روی دکمه پرداخت نهایی کلیک کنید"
+  step.value == 3
+    ? "لطفا اطلاعات زیر را بررسی و در صورت عدم وجود خطا روی دکمه پرداخت نهایی کلیک کنید"
+    : "لطفا فرم زیر را کامل کنید سپس روی دکمه ادامه کلیک کنید"
 );
 </script>
 <style lang="scss" module="TheCreateOrder">

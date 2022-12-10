@@ -142,7 +142,7 @@ const openModal = function () {
 };
 
 const goToOrderPage = function () {
-  router.push("order/create");
+  router.push({ name: "order-create" });
 };
 </script>
 

@@ -1,10 +1,12 @@
-.bg-primary-gradient {
-  background-image: linear-gradient(
-    rgb(var(--color-primary)),
-    rgb(var(--color-primary) / 0.6)
-  );
-}
+@layer utilities {
+  .bg-primary-gradient {
+    background-image: linear-gradient(
+      rgb(var(--color-primary)),
+      rgb(var(--color-primary) / 0.6)
+    );
+  }
 
-.max-w-1366 {
-  max-width: 1366px;
+  .max-w-1366 {
+    max-width: 1366px;
+  }
 }

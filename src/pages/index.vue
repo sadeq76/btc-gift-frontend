@@ -16,7 +16,9 @@
           خوش آمدی
         </h1>
         <div class="flex flex-col items-center">
-          <button class="mb-4 primary-button">ثبت سفارش</button>
+          <button @click="goToOrderPage" class="mb-4 primary-button">
+            ثبت سفارش
+          </button>
           <br />
           <NuxtLink to="/how-to-use">
             <span class="ml-3">play</span>
@@ -87,7 +89,9 @@
           قابلیت ثبت سفارش آسان و سریع
         </p>
         <div class="flex items-center">
-          <button class="ml-5 py-2 primary-button">ثبت سفارش</button>
+          <button @click="goToOrderPage" class="ml-5 py-2 primary-button">
+            ثبت سفارش
+          </button>
           <NuxtLink to="/how-to-use">
             <span class="ml-3">play</span>
             <span>آموزش استفاده از بی تی سی گیفت</span>
@@ -275,6 +279,11 @@ const features = reactive<featureModel[]>([
       "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
   },
 ]);
+const router = useRouter();
+
+const goToOrderPage = (): void => {
+  router.push({ name: "order-create" });
+};
 </script>
 <style lang="scss" module="TheLanding">
 .hero-section {
