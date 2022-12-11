@@ -1,0 +1,19 @@
+{
+  "mainRoad": [
+    {
+      "image": "image1.jpg",
+      "title": "سفارش کارت",
+      "description": "به سادگی یک کارت سفارش دهید"
+    },
+    {
+      "image": "image2.jpg",
+      "title": "دانلود اپلیکیشن",
+      "description": "اپلیکیشن فلان را دانلود کنید"
+    },
+    {
+      "image": "image3.jpg",
+      "title": "شارژ حساب",
+      "description": "حساب خود را از طریق اپلیکیشن شارژ کنید"
+    }
+  ]
+}
