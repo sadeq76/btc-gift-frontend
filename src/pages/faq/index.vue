@@ -31,7 +31,7 @@
 </template>
 <script lang="ts" setup>
 import faqModel from "../../models/faq.model";
-import { default as faqs } from "../../public/content/faq.json";
+import { default as faqs } from "../../content/faq.json";
 
 // const faqs = reactive<faqModel[]>([]);
 </script>

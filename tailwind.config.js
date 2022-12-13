@@ -70,6 +70,9 @@ module.exports = {
       aspectRatio: {
         "9/16": "9/16",
       },
+      borderRadius: {
+        circle: "50%",
+      },
     },
     animation: {
       none: "none",
