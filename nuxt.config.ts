@@ -1,5 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  ssr: false,
   runtimeConfig: {
     public: {
       apiBase: "",
@@ -37,6 +38,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
-  nitro: { prerender: { routes: ["/"] } },
 });

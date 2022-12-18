@@ -76,3 +76,11 @@ export const convertToShamsi = (input: string) => {
   };
   return new Date(input).toLocaleDateString("fa-IR", options);
 };
+
+export const getAssets = (path: string): string => {
+  const glob = import.meta.glob("~/assets/images/*/*", {
+    eager: true,
+  });
+
+  return glob[`/assets/${path}`]["default"];
+};

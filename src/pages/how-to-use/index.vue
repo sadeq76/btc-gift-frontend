@@ -4,13 +4,16 @@
       <span class="text-primary text-sm mb-2"> نحوه کار با بی تی سی گیفت </span>
       <span> {{ htu.mainTitle }} </span>
     </h1>
-    <div class="flex justify-around mt-12">
+    <div class="flex max-md:flex-wrap justify-around mt-12">
       <div
         :class="[TheHTU.card, 'p-4 rounded-lg  text-center']"
         v-for="(part, index) in htu.mainRoad"
         :key="index"
       >
-        <img :src="getImageAbsolutePath(part.image)" :alt="part.title" />
+        <img
+          :src="getAssets('images/how-to-use/' + part.image)"
+          :alt="part.title"
+        />
         <h2 class="mt-4">{{ part.title }}</h2>
         <p class="mt-2">{{ part.description }}</p>
       </div>
@@ -60,16 +63,27 @@
           class="border-l-2 border-primary border-dashed w-fit h-64 mx-auto"
         ></div>
         <div
-          class="h-64 w-64 overflow-hidden flex flex-col"
+          class="
+            absolute
+            top-16
+            left-6
+            max-md:-translate-x-1/2
+            text-center
+            bg-background
+            p-2
+            w-64
+            overflow-hidden
+            flex flex-col
+          "
           :class="[
             {
-              'absolute top-0 -right-4 translate-x-full text-left':
+              'md:top-0 md:-right-4 md:translate-x-full md:text-left':
                 index % 2 === 0,
-              'absolute right-16 top-0 text-right': index % 2 !== 0,
+              'md:right-16 md:top-0 md:text-right': index % 2 !== 0,
             },
           ]"
         >
-          <h2>{{ step.title }}</h2>
+          <h2 class="mb-2">{{ step.title }}</h2>
           <p>{{ step.description }}</p>
         </div>
       </div>
@@ -77,45 +91,48 @@
     <h2 class="mb-2 text-center">{{ htu.finalTitle }}</h2>
     <p class="text-center">{{ htu.finalDescription }}</p>
     <div
-      class="
-        w-full
-        flex flex-col
-        justify-center
-        items-center
-        rounded
-        border-primary border-2
-        p-4
-        my-4
-      "
+      class="relative flex flex-col justify-center items-center rounded md:mt-8"
     >
       <video
-        class="rounded mb-4"
-        :src="getImageAbsolutePath(htu.video)"
+        class="w-full rounded"
+        :src="getAssets('images/how-to-use/' + htu.video)"
       ></video>
-      <div>
-        <span class="icon-play mx-2"></span>
-        <span class="icon-play mx-2"></span>
-        <span class="icon-play mx-2"></span>
+      <div
+        class="
+          absolute
+          w-1/2
+          bottom-0
+          -translate-y-1/2
+          p-8
+          rounded
+          hover:shadow hover:shadow-primary
+          flex
+          justify-between
+          bg-primary
+        "
+      >
+        <div class="w-full"></div>
+        <div>
+          <span class="icon-play cursor-pointer text-background mx-2"></span>
+          <span class="icon-play cursor-pointer text-background mx-2"></span>
+          <span class="icon-play cursor-pointer text-background mx-2"></span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { default as htu } from "../../content/how-to-use.json";
-
-const glob = import.meta.glob("~/assets/images/how-to-use/*", {
-  eager: true,
-});
-
-const getImageAbsolutePath = (imageName: string): string => {
-  return glob[`/assets/images/how-to-use/${imageName}`]["default"];
-};
+import { getAssets } from "~~/src/composable/helpers";
 </script>
 <style lang="scss" module="TheHTU">
 .card {
-  width: 25vw;
-  height: 30vw;
-
+  width: 100vw;
+  height: 120vw;
+  @media (min-width: theme("screens.md")) {
+    width: 25vw;
+    height: 30vw;
+  }
   img {
     width: 100%;
     object-fit: contain;

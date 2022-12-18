@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 w-full max-w-1366">
     <h1 class="mb-2">سوالات متداول</h1>
-    <p class="mb-8 sm:mb-12">
+    <p class="mb-8 md:mb-12">
       در صورتی که به پاسخ سوالتان را نگرفتید در صفحه اصلی به ما پیغام دهید
     </p>
     <div v-for="(faq, index) in faqs" :key="index">
@@ -32,8 +32,6 @@
 <script lang="ts" setup>
 import faqModel from "../../models/faq.model";
 import { default as faqs } from "../../content/faq.json";
-
-// const faqs = reactive<faqModel[]>([]);
 </script>
 <style lang="scss" module="TheFaq">
 .detail {

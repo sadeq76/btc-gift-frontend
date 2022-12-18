@@ -10,7 +10,7 @@
       items-center
     "
   >
-    <div class="flex flex-col items-start max-sm:w-full max-sm:items-center">
+    <div class="flex flex-col items-start max-md:w-full max-md:items-center">
       <h2>لینک ها</h2>
       <NuxtLink
         v-for="(page, index) in pages"
@@ -24,7 +24,7 @@
       class="
         flex flex-col
         items-start
-        max-sm:w-full max-sm:items-center max-sm:mt-4
+        max-md:w-full max-md:items-center max-md:mt-4
       "
     >
       <h2>تماس با ما</h2>
@@ -37,13 +37,13 @@
         href="mailto:sadeqshahmoradi76@gmail.com"
         >sadeqshahmoradi76@gmail.com</a
       >
-      <address class="flex opacity-50 mt-4 max-sm:m-4">
+      <address class="flex opacity-50 mt-4 max-md:m-4">
         <h3 class="ml-2">آدرس:</h3>
         <p>یجایی دور خیلی دور دور تر از آنکه تو بدانی یا بتوانی بخواهی</p>
       </address>
     </div>
 
-    <div class="flex max-sm:hidden">
+    <div class="flex max-md:hidden">
       <h2 class="ml-2">ما را دنبال کنید:</h2>
       <span
         v-for="(socialAccount, index) in socialAccounts"
@@ -53,7 +53,7 @@
     </div>
     <hr class="w-full bg-background mt-8" />
     <div
-      class="w-full flex justify-between max-sm:flex-col max-sm:items-center"
+      class="w-full flex justify-between max-md:flex-col max-md:items-center"
     >
       <p class="text-center font-thin mt-4">
         کلیه حقوق این سایت نزد بی تی سی گیفت محفوظ بوده و تنها کپی با ذکر منبع

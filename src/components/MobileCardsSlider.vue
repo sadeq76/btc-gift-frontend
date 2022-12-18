@@ -52,7 +52,7 @@ const cards: cardModel[] = [
 .ctnr {
   transform-style: preserve-3d;
   height: 36vw;
-  @media (min-width: theme("screens.sm")) {
+  @media (min-width: theme("screens.md")) {
     height: 14vw;
   }
 }
@@ -61,7 +61,7 @@ const cards: cardModel[] = [
   transition: transform 0.4s ease;
   width: 65vw;
   height: 36vw;
-  @media (min-width: theme("screens.sm")) {
+  @media (min-width: theme("screens.md")) {
     width: 25vw;
     height: 14vw;
   }

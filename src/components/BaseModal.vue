@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
     min-height: 30rem;
     max-height: 40rem;
 
-    @media (max-width: theme("screens.sm")) {
+    @media (max-width: theme("screens.md")) {
       width: 100%;
       min-width: 100%;
       max-width: 100%;

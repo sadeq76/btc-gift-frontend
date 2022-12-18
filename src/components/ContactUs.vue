@@ -1,7 +1,7 @@
 <template>
   <section class="w-full h-max bg-test shadow-lg shadow-background flex">
     <form
-      class="p-4 sm:basis-1/2 sm:px-8 lg:px-14"
+      class="p-4 md:basis-1/2 md:px-8 lg:px-14"
       @submit.prevent="sendMessage"
     >
       <h2>با ما در ارتباط باشید ...</h2>
@@ -55,7 +55,7 @@
         <button class="w-full primary-button">ارسال پیام</button>
       </div>
     </form>
-    <div class="basis-1/2 bg-overlay max-sm:hidden">
+    <div class="basis-1/2 bg-overlay max-md:hidden">
       <!-- <img
           class="w-full h-full object-cover"
           src="~/assets/images/image3.jpg"
