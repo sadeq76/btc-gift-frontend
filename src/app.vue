@@ -27,15 +27,16 @@ const modalIsOpen = useModal();
 const snackbarIsOpen = useSnackbar();
 const isLogin = useAuth();
 
-// if (
-//   !("theme" in localStorage) &&
-//   window.matchMedia("(prefers-color-scheme: dark)").matches
-// ) {
-//   document.documentElement.setAttribute("data-mode", "dark");
-// }
-// if ("theme" in localStorage) {
-//   document.documentElement.setAttribute("data-mode", localStorage.theme);
-// }
+if (
+  process.client &&
+  !("theme" in localStorage) &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  document.documentElement.setAttribute("data-mode", "dark");
+}
+if (process.client && "theme" in localStorage) {
+  document.documentElement.setAttribute("data-mode", localStorage.theme);
+}
 </script>
 
 <style lang="scss" scoped>
