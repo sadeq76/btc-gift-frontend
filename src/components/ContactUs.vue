@@ -4,7 +4,9 @@
   >
     <form
       class="p-4 md:basis-1/2 md:px-8 lg:px-14"
-      @submit.prevent="sendMessage"
+      action="mailto:you@yourdmainhere.com"
+      method="post"
+      enctype="text/plain"
     >
       <h2>با ما در ارتباط باشید ...</h2>
       <input
@@ -47,6 +49,7 @@
         oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
         oninput="this.setCustomValidity('')"
       ></textarea>
+      <input type="file" class="hidden" />
       <div class="flex mt-8">
         <button
           class="ml-2 w-full secondary-button flex justify-center items-center"
@@ -54,7 +57,7 @@
           <span class="icon-upload text-primary ml-2"></span>
           آپلود فایل
         </button>
-        <button class="w-full primary-button">ارسال پیام</button>
+        <button type="submit" class="w-full primary-button">ارسال پیام</button>
       </div>
     </form>
     <div class="basis-1/2 bg-overlay max-md:hidden">

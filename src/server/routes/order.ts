@@ -1,5 +1,6 @@
 const data = [
   {
+    id: 21341,
     fullName: "آدولف هیتلر",
     type: "black",
     receiverName: "سید علی",
@@ -8,6 +9,7 @@ const data = [
     price: 100000,
   },
   {
+    id: 21241,
     fullName: "صدام حسین",
     type: "diamond",
     receiverName: "سید علی",
@@ -16,6 +18,7 @@ const data = [
     price: 350000,
   },
   {
+    id: 21331,
     fullName: "معمر قذافی",
     type: "gold",
     receiverName: "سید علی",
@@ -24,6 +27,7 @@ const data = [
     price: 530200,
   },
   {
+    id: 21342,
     fullName: "نیکلای چائوشسکو",
     type: "silver",
     receiverName: "سید علی",
@@ -32,6 +36,7 @@ const data = [
     price: 200450,
   },
   {
+    id: 25341,
     fullName: "موسولینی ",
     type: "bronze",
     receiverName: "سید علی",
@@ -40,6 +45,7 @@ const data = [
     price: 2300000,
   },
   {
+    id: 21641,
     fullName: "نیکلای چائوشسکو",
     type: "gold",
     receiverName: "سید علی",
@@ -48,6 +54,7 @@ const data = [
     price: 100000,
   },
   {
+    id: 21311,
     fullName: "آدولف هیتلر",
     type: "black",
     receiverName: "سید علی",
