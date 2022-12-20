@@ -1,5 +1,7 @@
 <template>
-  <section class="w-full h-max bg-test shadow-lg shadow-background flex">
+  <section
+    class="w-full h-max bg-test shadow-lg shadow-background flex justify-center"
+  >
     <form
       class="p-4 md:basis-1/2 md:px-8 lg:px-14"
       @submit.prevent="sendMessage"

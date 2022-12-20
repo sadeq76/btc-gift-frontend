@@ -36,7 +36,7 @@
           modes.get(!darkMode)
         }}</span>
         <span
-          @click="openModal"
+          @click="profile"
           class="icon-user text-primary ml-4 cursor-pointer"
         ></span>
         <button
@@ -85,10 +85,10 @@
             <NuxtLink :to="page.path">{{ page.title }}</NuxtLink>
           </li>
           <li
-            @click="openModal"
+            @click="profile"
             class="my-4 text-base cursor-pointer font-medium"
           >
-            ورود
+            {{ isLogin ? "لیست سفارشات" : "ورود" }}
           </li>
         </ul>
       </div>
@@ -98,6 +98,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
+import { useAuth } from "../composable/auth";
 import { useModal } from "../composable/state";
 import pageModel from "../models/page.model";
 
@@ -137,10 +138,14 @@ const toggleMenu = function () {
   isOpen.value = !isOpen.value;
 };
 
-const openModal = function () {
+const isLogin = useAuth();
+const profile = function () {
+  if (isLogin.value) {
+    router.push("/order/list");
+  } else {
+    useModal().value = true;
+  }
   isOpen.value = false;
-  const isModalOpen = useModal();
-  isModalOpen.value = true;
 };
 
 const goToOrderPage = function () {

@@ -4,7 +4,7 @@
     <header
       :class="[
         TheLanding['hero-section'],
-        'sm:hidden bg-background w-full flex flex-col',
+        'md:hidden bg-background w-full flex flex-col',
       ]"
     >
       <div class="grow relative w-full">
@@ -141,8 +141,8 @@
       </div>
     </header>
     <!-- Cards Slider Section -->
-    <section class="m-4 px-8 flex flex-col items-center max-w-1366">
-      <h2>
+    <section class="m-4 px-8 flex flex-col items-center lg:hidden">
+      <h2 class="text-center">
         گیفت کارت های
         <span class="text-primary">بی تی سی</span>
         با مبالغ متنوع

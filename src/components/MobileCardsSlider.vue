@@ -51,19 +51,19 @@ const cards: cardModel[] = [
 <style lang="scss" scoped>
 .ctnr {
   transform-style: preserve-3d;
-  height: 36vw;
+  height: 40vw;
   @media (min-width: theme("screens.md")) {
-    height: 14vw;
+    height: 25vw;
   }
 }
 
 .card {
   transition: transform 0.4s ease;
-  width: 65vw;
-  height: 36vw;
+  width: 75%;
+  height: fit-content;
   @media (min-width: theme("screens.md")) {
-    width: 25vw;
-    height: 14vw;
+    width: 40%;
+    height: fit-content;
   }
 }
 

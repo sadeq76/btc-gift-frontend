@@ -73,6 +73,12 @@ const config = {
       borderRadius: {
         circle: "50%",
       },
+      maxWidth: {
+        "1/4": "25%",
+      },
+      minWidth: {
+        snackbar: "15%",
+      },
     },
     animation: {
       none: "none",

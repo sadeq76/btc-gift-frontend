@@ -1,17 +1,17 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  ssr: false,
-  runtimeConfig: {
-    public: {
-      apiBase: "",
-    },
-  },
+  ssr: true,
+  // runtimeConfig: {
+  //   public: {
+  //     apiBase: "",
+  //   },
+  // },
+
+  // appConfig: {
+  //   baseApi: "www.api.btcgift.shop/",
+  // },
 
   srcDir: "src/",
-
-  appConfig: {
-    baseApi: "www.api.btcgift.shop/",
-  },
 
   app: {
     buildAssetsDir: "btc-gift/",
