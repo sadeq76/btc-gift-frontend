@@ -21,8 +21,8 @@
               ثبت سفارش
             </button>
             <br />
-            <NuxtLink to="/how-to-use">
-              <span class="ml-3">play</span>
+            <NuxtLink class="flex items-center" to="/how-to-use">
+              <span class="ml-3 icon-play-circle"></span>
               <span>آموزش نحوه استفاده</span>
             </NuxtLink>
           </div>
@@ -107,8 +107,8 @@
             <button @click="goToOrderPage" class="ml-5 py-2 primary-button">
               ثبت سفارش
             </button>
-            <NuxtLink to="/how-to-use">
-              <span class="ml-3">play</span>
+            <NuxtLink class="flex items-center" to="/how-to-use">
+              <span class="ml-3 icon-play-circle"></span>
               <span>آموزش استفاده از بی تی سی گیفت</span>
             </NuxtLink>
           </div>
@@ -191,7 +191,7 @@
               shadow-md shadow-primary
             "
           >
-            <span>shield</span>
+            <span :class="`icon-${item.icon} text-background text-4xl`"></span>
           </div>
           <h3 class="text-primary mt-4">{{ item.title }}</h3>
           <p class="mt-4 max-md:text-center">{{ item.description }}</p>

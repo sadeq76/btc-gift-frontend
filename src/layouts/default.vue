@@ -32,12 +32,17 @@
           max-md:hidden
         "
       >
-        <span @click="changeMode" class="ml-8 cursor-pointer">{{
-          modes.get(!darkMode)
-        }}</span>
+        <span
+          @click="changeMode"
+          :class="`ml-8 icon-${
+            modes.get(!darkMode) == 'dark' ? 'moon' : 'sun'
+          } text-primary cursor-pointer`"
+        ></span>
         <span
           @click="profile"
-          class="icon-user text-primary ml-4 cursor-pointer"
+          :class="`icon-${
+            isLogin ? 'list' : 'account'
+          } text-primary ml-4 cursor-pointer`"
         ></span>
         <button
           @click="goToOrderPage"
@@ -47,7 +52,7 @@
         </button>
       </div>
       <button @click="toggleMenu" class="icon-button md:hidden">
-        <span class="icon-bars"></span>
+        <span class="icon-menu"></span>
       </button>
     </nav>
     <transition
@@ -73,7 +78,9 @@
           <span class="icon-angle-left"></span>
         </button>
         <button @click="changeMode" class="icon-button absolute right-4 top-4">
-          <span class="icon-close"></span>
+          <span
+            :class="`icon-${modes.get(!darkMode) == 'dark' ? 'moon' : 'sun'}`"
+          ></span>
         </button>
         <ul class="flex flex-col justify-center items-center">
           <li

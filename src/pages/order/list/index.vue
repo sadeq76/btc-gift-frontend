@@ -2,7 +2,11 @@
   <div class="p-4 w-full max-w-1366">
     <div class="flex justify-between items-center mb-4">
       <h1>لیست سفارشات</h1>
-      <span @click="logoutUser" class="text-primary">خروج</span>
+      <span
+        @click="logoutUser"
+        class="icon-logout text-primary cursor-pointer"
+        title="خروج"
+      ></span>
     </div>
     <p class="mb-8 md:mb-12">
       در صورت نیاز بر روی دکمه دانلود کلیک کنید و خروجی پی دی اف را دریافت کنید
