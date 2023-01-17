@@ -75,7 +75,7 @@ import pageModel from "../models/page.model";
 
 const pages = reactive<pageModel[]>([
   { title: "خانه", path: "/" },
-  { title: "نحوه استفاده", path: "/how-to-use" },
+  { title: "بلاگ ها", path: "/blog/list" },
   { title: "سوالات متداول", path: "/faq" },
 ]);
 const socialAccounts = [

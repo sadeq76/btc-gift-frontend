@@ -37,6 +37,14 @@
   }
 }
 
+[class^="icon-angle"],
+[class*="icon-angle"] {
+  font-size: 14px;
+  @media only screen and (min-width: 900px) {
+    font-size: 18px;
+  }
+}
+
 .icon-account:before {
   content: "\e900";
 }

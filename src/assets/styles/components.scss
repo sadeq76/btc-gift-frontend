@@ -1,24 +1,35 @@
 @layer components {
-  .primary-button {
+  .btc-primary-button {
     @apply px-4 py-2 bg-primary text-test rounded text-base shadow-sm shadow-primary text-center border-primary border-2 hover:bg-primary/80 hover:border-primary/80;
   }
+  .btc-primary-button:disabled {
+    @apply px-4 py-2 bg-primary/20 text-test rounded text-base shadow-sm shadow-none text-center border-none hover:bg-primary/20 hover:border-none;
+  }
 
-  .secondary-button {
+  .btc-secondary-button {
     @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80;
   }
 
-  .icon-button {
+  .btc-secondary-button:disabled {
+    @apply px-4 py-2 text-primary/20 rounded text-base border-solid border-primary/20 border-2 text-center hover:border-primary/20;
+  }
+
+  .btc-icon-button {
     @apply px-0 bg-transparent text-primary text-center;
   }
 
-  .text-field {
+  .btc-text-field {
     @apply px-4 py-2 bg-background text-text rounded resize-none focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success;
     border: solid 1.5px rgb(var(--color-text) / 0.2);
   }
 
-  .textarea {
+  .btc-textarea {
     @apply px-4 py-2 bg-background text-text rounded focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success  focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success resize-none;
     border: solid 1.5px rgb(var(--color-text) / 0.2);
+  }
+
+  .btc-card {
+    @apply p-4 rounded bg-background shadow;
   }
 
   .table {

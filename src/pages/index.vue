@@ -16,12 +16,13 @@
             <span class="text-primary px-2">بی تی سی گیفت</span>
             خوش آمدی
           </h1>
-          <div class="flex flex-col items-center">
-            <button @click="goToOrderPage" class="mb-4 primary-button">
+          <p>{{ landing.heroSectionDescription }}</p>
+          <div class="flex flex-col items-center mt-4">
+            <button @click="goToOrderPage" class="mb-4 btc-primary-button">
               ثبت سفارش
             </button>
             <br />
-            <NuxtLink class="flex items-center" to="/how-to-use">
+            <NuxtLink class="flex items-center" to="/blog/1">
               <span class="ml-3 icon-play-circle"></span>
               <span>آموزش نحوه استفاده</span>
             </NuxtLink>
@@ -98,16 +99,13 @@
               >
               خوش آمدی
             </h1>
-            <p>
-              بی تی سی گیفت تنها فروشنده کارت های هدیه ارز دیجیتال در ایران با
-              قابلیت ثبت سفارش آسان و سریع
-            </p>
+            <p>{{ landing.heroSectionDescription }}</p>
           </div>
           <div class="flex items-center max-lg:justify-center">
-            <button @click="goToOrderPage" class="ml-5 py-2 primary-button">
+            <button @click="goToOrderPage" class="ml-5 py-2 btc-primary-button">
               ثبت سفارش
             </button>
-            <NuxtLink class="flex items-center" to="/how-to-use">
+            <NuxtLink class="flex items-center" to="/blog/1">
               <span class="ml-3 icon-play-circle"></span>
               <span>آموزش استفاده از بی تی سی گیفت</span>
             </NuxtLink>
@@ -200,28 +198,9 @@
     </div>
     <!-- Features Image Slider -->
     <section class="p-4 w-full md:hidden">
-      <ImageSlider :features="features" />
+      <BlogsSlider :blogs="[]" />
     </section>
-    <section class="w-full h-fit py-12 max-w-1366 px-8 max-md:hidden">
-      <div
-        v-for="(item, index) in features"
-        :key="index"
-        class="my-12 flex justify-start items-center"
-        :dir="index % 2 !== 0 ? 'ltr' : 'rtl'"
-      >
-        <div :class="[TheLanding['img-container'], 'relative w-1/2']">
-          <img
-            class="aspect-video w-full"
-            :src="item.image"
-            :alt="item.title"
-          />
-        </div>
-        <div class="mx-8 w-1/2 overflow-hidden">
-          <h2>{{ item.title }}</h2>
-          <p class="">{{ item.description }}</p>
-        </div>
-      </div>
-    </section>
+    <DesktopBlogs :blogs="blogs" class="md:px-8 m-12 w-full max-w-1366" />
     <!-- Contact us -->
     <ContactUs />
     <!-- Footer -->
@@ -229,10 +208,16 @@
   </div>
 </template>
 <script lang="ts" setup>
+import landing from "../content/landing.json";
+
 import imageModel from "../models/image.model";
 import counterModel from "../models/counter.model";
 import whyusModel from "../models/whyus.model";
-import featureModel from "../models/feature.model";
+
+import { fetchData } from "../composable/fetch";
+
+// types
+import { NavigationFailure } from "vue-router";
 
 // images
 //@ts-ignore
@@ -285,25 +270,22 @@ const whyus = reactive<whyusModel[]>([
       "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
   },
 ]);
-const features = reactive<featureModel[]>([
-  {
-    image: image1,
-    title: "امکان سفارش هولدر با متن سفارشی",
-    description: "",
-  },
-  {
-    image: image2,
-    title: "سرعت و سهولت سفارش",
-    description:
-      "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
-  },
-]);
-const router = useRouter();
 
-const goToOrderPage = (): void => {
-  router.push({ name: "order-create" });
-};
+const router = useRouter();
+const goToOrderPage = (): Promise<void | NavigationFailure> =>
+  router.push("order/create/unknown");
+
+let blogs = ref<any[]>();
+
+onMounted(() => {
+  fetchData({
+    url: "/blog?offset=0&limit=4",
+  }).then((res) => {
+    blogs.value = res;
+  });
+});
 </script>
+
 <style lang="scss" module="TheLanding">
 .hero-section {
   height: min(177vw, 768px);
@@ -327,24 +309,5 @@ const goToOrderPage = (): void => {
   left: 0;
   top: 0;
   bottom: 0;
-}
-
-.img-container {
-  border: 0.5rem solid rgb(var(--color-primary));
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 0.5rem 0.3rem rgb(var(--color-primary));
-  width: 32rem;
-}
-
-.img-container::after {
-  content: "";
-  border: 0.3rem dashed rgb(var(--color-primary));
-  border-radius: 0.5rem;
-  position: absolute;
-  left: -0.5em;
-  right: -0.5em;
-  top: -0.5em;
-  bottom: -0.5em;
-  transform: rotate(-5deg);
 }
 </style>

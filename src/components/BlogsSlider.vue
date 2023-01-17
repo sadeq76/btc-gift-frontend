@@ -1,16 +1,12 @@
 <template>
-  <div
-    class="w-full"
-    v-for="(feature, index) in features.slice(0, 1)"
-    :key="index"
-  >
+  <div class="w-full" v-for="(blog, index) in blogs" :key="index">
     <div
-      :class="[ImageSlider.container, 'relative rounded-md overflow-hidden']"
+      :class="[blogsSlider.container, 'relative rounded-md overflow-hidden']"
     >
       <div class="bg-primary absolute top-0 right-0 bottom-0 left-0">
         <img
           class="w-full h-full aspect-video object-cover"
-          :src="feature.image"
+          :src="blog.cover"
           alt=""
         />
         <div
@@ -26,10 +22,10 @@
             bg-overlay
           "
         >
-          <button class="icon-button p-4">
+          <button class="btc-icon-button p-4">
             <span class="icon-angle-right text-background"></span>
           </button>
-          <button class="icon-button p-4">
+          <button class="btc-icon-button p-4">
             <span class="icon-angle-left text-background"></span>
           </button>
         </div>
@@ -38,19 +34,19 @@
         </div>
       </div>
     </div>
-    <h2 class="mt-4 text-center">{{ feature.title || "بدون عنوان" }}</h2>
-    <p class="mt-4 text-center">{{ feature.description || "بدون توضیحات" }}</p>
+    <h2 class="mt-4 text-center">{{ blog.title || "بدون عنوان" }}</h2>
+    <p class="mt-4 text-center">{{ blog.description || "بدون توضیحات" }}</p>
   </div>
 </template>
 <script lang="ts" setup>
-import featureModel from "../models/feature.model";
+import BlogModel from "../models/blog.model";
 interface Props {
-  features: featureModel[];
+  blogs: BlogModel[];
 }
 
 const props = defineProps<Props>();
 </script>
-<style lang="scss" module="ImageSlider">
+<style lang="scss" module="blogsSlider">
 .container {
   padding-top: 56%;
 }

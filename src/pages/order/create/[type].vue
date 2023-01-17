@@ -19,7 +19,7 @@
             id="fullname"
             placeholder="نام شخص"
             aria-label="نام شخص"
-            class="text-field w-full"
+            class="btc-text-field w-full"
           />
         </div>
         <div class="w-1/2 max-md:mt-4 max-md:w-full">
@@ -30,7 +30,7 @@
             id="fullname"
             placeholder="نوع کارت"
             aria-label="نوع کارت"
-            class="text-field w-full"
+            class="btc-text-field w-full"
           />
         </div>
         <textarea
@@ -40,7 +40,7 @@
           rows="5"
           placeholder="متن تبریک"
           aria-label="پیام"
-          class="textarea w-full mt-4"
+          class="btc-textarea w-full mt-4"
         ></textarea>
       </div>
       <div class="w-full flex flex-wrap" v-if="step == 2">
@@ -51,7 +51,7 @@
           rows="5"
           placeholder="آدرس کامل"
           aria-label="پیام"
-          class="textarea w-full mb-4"
+          class="btc-textarea w-full mb-4"
           required
           oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
           oninput="this.setCustomValidity('')"
@@ -64,7 +64,7 @@
             id="fullname"
             placeholder="کد پستی"
             aria-label="کد پستی"
-            class="text-field w-full"
+            class="btc-text-field w-full"
             required
             oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
             oninput="this.setCustomValidity('')"
@@ -78,7 +78,7 @@
             id="fullname"
             placeholder="نام تحویل گیرنده"
             aria-label="نام تحویل گیرنده"
-            class="text-field w-full"
+            class="btc-text-field w-full"
             required
             oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
             oninput="this.setCustomValidity('')"
@@ -91,7 +91,7 @@
           id="fullname"
           placeholder="شماره تماس تحویل گیرنده"
           aria-label="شماره تماس تحویل گیرنده"
-          class="text-field w-full mt-4"
+          class="btc-text-field w-full mt-4"
           required
           oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
           oninput="this.setCustomValidity('')"
@@ -107,11 +107,11 @@
         <button
           v-if="step !== 1"
           @click="goToPreviousStep"
-          class="secondary-button ml-4"
+          class="btc-secondary-button ml-4"
         >
           مرحله قبلی
         </button>
-        <button @click="goToNextStep" class="primary-button">
+        <button @click="goToNextStep" class="btc-primary-button">
           {{ step !== 4 ? "مرحله بعدی" : "پرداخت نهایی" }}
         </button>
       </div>

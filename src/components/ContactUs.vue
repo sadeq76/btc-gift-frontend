@@ -17,7 +17,7 @@
         id="fullname"
         placeholder="نام کامل"
         aria-label="نام کامل"
-        class="text-field w-full mt-4"
+        class="btc-text-field w-full mt-4"
         required
         oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
         oninput="this.setCustomValidity('')"
@@ -31,7 +31,7 @@
         id="email"
         placeholder="ایمیل"
         aria-label="ایمیل"
-        class="text-field w-full mt-4"
+        class="btc-text-field w-full mt-4"
         required
         oninvalid="this.setCustomValidity('ایمیل را با فرمت صحیح وارد کنید')"
         oninput="this.setCustomValidity('')"
@@ -44,7 +44,7 @@
         rows="5"
         placeholder="پیام خود را وارد کنید ..."
         aria-label="پیام"
-        class="textarea w-full mt-4"
+        class="btc-textarea w-full mt-4"
         required
         oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
         oninput="this.setCustomValidity('')"
@@ -52,12 +52,21 @@
       <input type="file" class="hidden" />
       <div class="flex mt-8">
         <button
-          class="ml-2 w-full secondary-button flex justify-center items-center"
+          class="
+            ml-2
+            w-full
+            btc-secondary-button
+            flex
+            justify-center
+            items-center
+          "
         >
           <span class="icon-upload text-primary ml-2"></span>
           آپلود فایل
         </button>
-        <button type="submit" class="w-full primary-button">ارسال پیام</button>
+        <button type="submit" class="w-full btc-primary-button">
+          ارسال پیام
+        </button>
       </div>
     </form>
     <div class="basis-1/2 bg-overlay max-md:hidden">

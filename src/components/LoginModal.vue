@@ -19,7 +19,7 @@
             id="phone"
             placeholder="شماره تماس"
             aria-label="شماره تماس"
-            class="text-field w-full mt-4 text-center"
+            class="btc-text-field w-full mt-4 text-center"
             required
             oninvalid="this.setCustomValidity('لطفا شماره تماس را با فرمت درست وارد کنید')"
             oninput="this.setCustomValidity('')"
@@ -33,7 +33,7 @@
             id="code"
             placeholder="کد ارسالی"
             aria-label="کد ارسالی"
-            class="text-field w-full mt-4 text-center"
+            class="btc-text-field w-full mt-4 text-center"
             maxlength="4"
             required
             oninvalid="this.setCustomValidity('لطفا کد ارسال شده به شماره بالا را وارد کنید')"
@@ -43,7 +43,7 @@
       </div>
     </template>
     <template #actions>
-      <button type="submit" class="w-full primary-button" form="login-form">
+      <button type="submit" class="w-full btc-primary-button" form="login-form">
         ورود
       </button>
     </template>

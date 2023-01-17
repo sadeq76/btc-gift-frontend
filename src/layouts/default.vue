@@ -3,7 +3,7 @@
     <nav
       :class="[
         TheLayout.navbar,
-        'fixed top-0 z-20 px-4 py-2 bg-white dark:bg-test shadow w-full flex justify-between',
+        'fixed overflow-hidden top-0 z-20 px-4 py-2 bg-white dark:bg-test shadow w-full flex justify-between',
       ]"
     >
       <a class="h-full flex items-center md:basis-1/6" href="/" target="_self">
@@ -22,16 +22,7 @@
         </NuxtLink>
       </div>
 
-      <div
-        class="
-          overflow-hidden
-          flex
-          justify-end
-          items-center
-          md:basis-1/6
-          max-md:hidden
-        "
-      >
+      <div class="flex justify-end items-center md:basis-1/6 max-md:hidden">
         <span
           @click="changeMode"
           :class="`ml-8 icon-${
@@ -46,12 +37,12 @@
         ></span>
         <button
           @click="goToOrderPage"
-          class="h-full primary-button whitespace-nowrap"
+          class="h-full btc-primary-button whitespace-nowrap"
         >
           ثبت سفارش
         </button>
       </div>
-      <button @click="toggleMenu" class="icon-button md:hidden">
+      <button @click="toggleMenu" class="btc-icon-button md:hidden">
         <span class="icon-menu"></span>
       </button>
     </nav>
@@ -74,10 +65,16 @@
           items-center
         "
       >
-        <button @click="toggleMenu" class="icon-button absolute left-4 top-4">
+        <button
+          @click="toggleMenu"
+          class="btc-icon-button absolute left-4 top-4"
+        >
           <span class="icon-angle-left"></span>
         </button>
-        <button @click="changeMode" class="icon-button absolute right-4 top-4">
+        <button
+          @click="changeMode"
+          class="btc-icon-button absolute right-4 top-4"
+        >
           <span
             :class="`icon-${modes.get(!darkMode) == 'dark' ? 'moon' : 'sun'}`"
           ></span>
@@ -122,7 +119,7 @@ onMounted(() => {
 
 const pages = reactive<pageModel[]>([
   { title: "خانه", path: "/" },
-  { title: "نحوه استفاده", path: "/how-to-use" },
+  { title: "بلاگ ها", path: "/blog/list" },
   { title: "سوالات متداول", path: "/faq" },
 ]);
 
@@ -163,6 +160,5 @@ const goToOrderPage = function () {
 <style lang="scss" module="TheLayout">
 .navbar {
   height: 56px;
-  overflow: hidden;
 }
 </style>
