@@ -19,6 +19,12 @@ export default defineNuxtConfig({
       title: "BTC-Gift",
       htmlAttrs: { dir: "rtl", lang: "fa" },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      script: [
+        {
+          src: "/stickybits.min.js",
+          body: true,
+        },
+      ],
       noscript: [
         {
           children:

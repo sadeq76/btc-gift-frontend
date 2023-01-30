@@ -34,4 +34,12 @@
     line-clamp: 4;
     -webkit-box-orient: vertical;
   }
+
+  .line-height-normal {
+    line-height: normal;
+  }
+
+  .h-main {
+    height: calc(100vh - 56px);
+  }
 }

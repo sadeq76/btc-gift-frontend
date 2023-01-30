@@ -3,7 +3,7 @@
     <nav
       :class="[
         TheLayout.navbar,
-        'fixed overflow-hidden top-0 z-20 px-4 py-2 bg-white dark:bg-test shadow w-full flex justify-between',
+        'fixed top-0 z-20 px-4 py-2 bg-white dark:bg-test shadow w-full flex justify-between',
       ]"
     >
       <a class="h-full flex items-center md:basis-1/6" href="/" target="_self">
@@ -29,12 +29,20 @@
             modes.get(!darkMode) == 'dark' ? 'moon' : 'sun'
           } text-primary cursor-pointer`"
         ></span>
-        <span
+        <a
           @click="profile"
-          :class="`icon-${
-            isLogin ? 'list' : 'account'
-          } text-primary ml-4 cursor-pointer`"
-        ></span>
+          class="flex justify-end items-center"
+          href="#profile-pop-up"
+        >
+          <span
+            :class="`icon-account text-primary ml-4 cursor-pointer`"
+            class="relative"
+          >
+            <BasePopUp id="profile-pop-up">
+              <BaseProfile />
+            </BasePopUp>
+          </span>
+        </a>
         <button
           @click="goToOrderPage"
           class="h-full btc-primary-button whitespace-nowrap"
@@ -144,9 +152,7 @@ const toggleMenu = function () {
 
 const isLogin = useAuth();
 const profile = function () {
-  if (isLogin.value) {
-    router.push("/order/list");
-  } else {
+  if (!isLogin.value) {
     useModal().value = true;
   }
   isOpen.value = false;

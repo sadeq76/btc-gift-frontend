@@ -28,6 +28,10 @@
     border: solid 1.5px rgb(var(--color-text) / 0.2);
   }
 
+  .btc-avatar {
+    @apply rounded-circle w-fit h-fit;
+  }
+
   .btc-card {
     @apply p-4 rounded bg-background shadow;
   }
@@ -67,5 +71,9 @@
     );
     height: 0.3rem;
     width: var(--width-progress-bar);
+  }
+
+  .btc-avatar {
+    @apply w-16 h-16 bg-primary rounded-circle flex justify-center items-center;
   }
 }

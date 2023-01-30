@@ -26,7 +26,6 @@
         <div class="mt-4 flex justify-between">
           <p>22 آبان ماه 76</p>
           <button
-            @click="goToBlog(id)"
             class="
               btc-icon-button
               border-b-2 border-primary
@@ -41,8 +40,7 @@
         </div>
       </div>
     </div>
-
-    <h2 class="px-4 max-w-1366 w-full lg:my-4">آخرین خبرنامه ها</h2>
+    <h2 class="mt-4 px-4 max-w-1366 w-full">آخرین خبرنامه ها</h2>
     <div class="max-w-1366 flex flex-wrap w-full">
       <div
         v-for="n in 4"

@@ -1,9 +1,9 @@
 <template>
   <div class="w-full p-4 flex flex-col items-center">
     <div class="w-full max-w-1366">
-      <h1 class="mb-2">سوالات متداول</h1>
+      <h1 class="mb-2">{{ actions.mainTitle }}</h1>
       <p class="mb-8 md:mb-12">
-        در صورتی که به پاسخ سوالتان را نگرفتید در صفحه اصلی به ما پیغام دهید
+        {{ actions.mainDescription }}
       </p>
     </div>
     <img
@@ -16,7 +16,7 @@
       تغییر مالکیت کارت به آقای فلانی
     </p>
     <div
-      v-for="(action, index) in actions"
+      v-for="(action, index) in actions.actions"
       :key="index"
       class="bg-test p-4 w-full max-w-1366 rounded-md first:mt-12 mt-4"
     >
@@ -71,38 +71,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const actions = [
-  {
-    title: "انتقال به کیف پول دیگر",
-    description: "انتقال وجه ازین کارت به کارت دیگر بدونپرداخت کارزد",
-    fields: [
-      { key: "PhoneNumber", label: "sd", value: "", pattern: "" },
-      { key: "name", label: "asd", value: "", pattern: "" },
-    ],
-    button: { label: "ثبت", isDisable: false },
-    isDisable: true,
-  },
-  {
-    title: "دریافت معادل وجه نقد",
-    description: "دریافت معادل وجه در کارت بانکی یا بانک های سر تا سر دنیا",
-    fields: [
-      { key: "PhoneNumber", label: "sd", value: "", pattern: "" },
-      { key: "name", label: "asd", value: "", pattern: "" },
-    ],
-    button: { label: "ثبت", isDisable: false },
-    isDisable: false,
-  },
-  {
-    title: "هدیه به شخص دیگر",
-    description: "تغییر مالکیت کارت به شخص دیگر",
-    fields: [
-      { key: "PhoneNumber", label: "sd", value: "", pattern: "" },
-      { key: "name", label: "asd", value: "", pattern: "" },
-    ],
-    button: { label: "ثبت", isDisable: true },
-    isDisable: false,
-  },
-];
+import actions from "@/content/actions.json";
 
 const clicked = (event, isDisable) => (isDisable ? event.preventDefault() : {});
 

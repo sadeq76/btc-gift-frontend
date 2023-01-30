@@ -1,5 +1,10 @@
 <template>
-  <div class="w-full" v-for="(blog, index) in blogs" :key="index">
+  <div
+    v-for="(blog, index) in blogs"
+    :key="index"
+    class="w-full animate-fade"
+    :class="{ hidden: slideIndex !== index }"
+  >
     <div
       :class="[blogsSlider.container, 'relative rounded-md overflow-hidden']"
     >
@@ -7,7 +12,7 @@
         <img
           class="w-full h-full aspect-video object-cover"
           :src="blog.cover"
-          alt=""
+          :alt="blog.title"
         />
         <div
           class="
@@ -22,10 +27,10 @@
             bg-overlay
           "
         >
-          <button class="btc-icon-button p-4">
+          <button @click="previousSlide" class="btc-icon-button p-4">
             <span class="icon-angle-right text-background"></span>
           </button>
-          <button class="btc-icon-button p-4">
+          <button @click="nextSlide" class="btc-icon-button p-4">
             <span class="icon-angle-left text-background"></span>
           </button>
         </div>
@@ -45,6 +50,20 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+let slideIndex = ref<number>(0);
+
+const previousSlide = (): number =>
+  slideIndex.value !== 0
+    ? slideIndex.value--
+    : (slideIndex.value = props.blogs.length - 1);
+
+const nextSlide = (): number =>
+  slideIndex.value < props.blogs.length - 1
+    ? slideIndex.value++
+    : (slideIndex.value = 0);
+
+const selectSlide = (index: number): number => (slideIndex.value = index);
 </script>
 <style lang="scss" module="blogsSlider">
 .container {

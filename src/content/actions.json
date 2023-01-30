@@ -1,0 +1,36 @@
+{
+  "mainTitle": "کارت شما",
+  "mainDescription": "این کارت شما است",
+  "actions": [
+    {
+      "title": "انتقال به کیف پول دیگر",
+      "description": "انتقال وجه ازین کارت به کارت دیگر بدونپرداخت کارزد",
+      "fields": [
+        { "key": "PhoneNumber", "label": "sd", "value": "", "pattern": "" },
+        { "key": "name", "label": "asd", "value": "", "pattern": "" }
+      ],
+      "button": { "label": "ثبت", "isDisable": false },
+      "isDisable": true
+    },
+    {
+      "title": "دریافت معادل وجه نقد",
+      "description": "دریافت معادل وجه در کارت بانکی یا بانک های سر تا سر دنیا",
+      "fields": [
+        { "key": "PhoneNumber", "label": "sd", "value": "", "pattern": "" },
+        { "key": "name", "label": "asd", "value": "", "pattern": "" }
+      ],
+      "button": { "label": "ثبت", "isDisable": false },
+      "isDisable": false
+    },
+    {
+      "title": "هدیه به شخص دیگر",
+      "description": "تغییر مالکیت کارت به شخص دیگر",
+      "fields": [
+        { "key": "PhoneNumber", "label": "sd", "value": "", "pattern": "" },
+        { "key": "name", "label": "asd", "value": "", "pattern": "" }
+      ],
+      "button": { "label": "ثبت", "isDisable": true },
+      "isDisable": false
+    }
+  ]
+}

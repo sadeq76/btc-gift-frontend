@@ -1,22 +1,20 @@
 <template>
-  <div>
+  <div class="main">
     <NuxtLayout />
     <NuxtLoadingIndicator color="orange" />
-    <div class="main flex flex-col items-center w-full overflow-x-hidden">
-      <NuxtPage />
-      <transition
-        enter-active-class="animate-zoom-in"
-        leave-active-class="animate-zoom-out"
-      >
-        <LoginModal v-if="modalIsOpen"
-      /></transition>
-      <transition
-        enter-active-class="animate-zoom-in"
-        leave-active-class="animate-zoom-out"
-      >
-        <BaseSnackbar v-if="snackbarIsOpen" />
-      </transition>
-    </div>
+    <NuxtPage />
+    <transition
+      enter-active-class="animate-zoom-in"
+      leave-active-class="animate-zoom-out"
+    >
+      <LoginModal v-if="modalIsOpen"
+    /></transition>
+    <transition
+      enter-active-class="animate-zoom-in"
+      leave-active-class="animate-zoom-out"
+    >
+      <BaseSnackbar v-if="snackbarIsOpen" />
+    </transition>
   </div>
 </template>
 

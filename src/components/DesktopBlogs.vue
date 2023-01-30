@@ -20,9 +20,18 @@
               'overflow-hidden grow flex flex-col',
             ]"
           >
-            <h3 :class="{ 'my-4': index === 0, 'mr-4': index !== 0 }">
+            <h3 :class="{ 'mt-4': index === 0, 'mr-4': index !== 0 }">
               {{ blog.title }}
             </h3>
+            <p
+              class="opacity-50"
+              :class="{
+                'mr-4': index !== 0,
+                'mt-2': true,
+              }"
+            >
+              {{ convertToShamsi(blog.creation_date) }}
+            </p>
             <p
               :class="{
                 'my-4': index === 0,
@@ -46,6 +55,7 @@
 
 <script setup lang="ts">
 import { NavigationFailure } from "vue-router";
+import { convertToShamsi } from "../composable/helpers";
 import BlogModel from "../models/blog.model";
 interface Props {
   blogs: BlogModel[];

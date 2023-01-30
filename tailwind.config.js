@@ -36,6 +36,7 @@ const config = {
     },
     extend: {
       spacing: {
+        18: "4.5rem",
         124: "32rem",
       },
       keyframes: {
@@ -66,6 +67,14 @@ const config = {
             "background-position-x": "0",
           },
         },
+        fade: {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
       },
       aspectRatio: {
         "9/16": "9/16",
@@ -91,6 +100,7 @@ const config = {
       "zoom-in": "zoom 0.2s forwards ease-in",
       "zoom-out": "zoom 0.2s forwards ease-in reverse",
       gradient: "gradient 1s linear forwards infinite",
+      fade: "fade 1s linear forwards 1",
     },
     aria: {
       checked: 'checked="true"',

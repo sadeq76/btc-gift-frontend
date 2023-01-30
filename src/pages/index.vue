@@ -198,9 +198,12 @@
     </div>
     <!-- Features Image Slider -->
     <section class="p-4 w-full md:hidden">
-      <BlogsSlider :blogs="[]" />
+      <BlogsSlider :blogs="blogs" />
     </section>
-    <DesktopBlogs :blogs="blogs" class="md:px-8 m-12 w-full max-w-1366" />
+    <DesktopBlogs
+      :blogs="blogs"
+      class="md:px-8 m-12 w-full max-w-1366 max-md:hidden"
+    />
     <!-- Contact us -->
     <ContactUs />
     <!-- Footer -->
