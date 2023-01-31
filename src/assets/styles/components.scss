@@ -7,7 +7,7 @@
   }
 
   .btc-secondary-button {
-    @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80;
+    @apply px-4 py-2 text-primary rounded text-base border-solid border-primary border-2 text-center hover:border-primary/80 flex justify-center items-center;
   }
 
   .btc-secondary-button:disabled {
@@ -21,6 +21,15 @@
   .btc-text-field {
     @apply px-4 py-2 bg-background text-text rounded resize-none focus:placeholder:text-primary focus:outline-none focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success;
     border: solid 1.5px rgb(var(--color-text) / 0.2);
+  }
+
+  .btc-input-container {
+    @apply p-2 bg-background text-text rounded resize-none focus:placeholder:text-primary focus:border-primary focus:caret-primary focus:text-primary focus:shadow-sm focus:shadow-primary focus:valid:border-success focus:valid:shadow-success focus:valid:placeholder:text-success focus:valid:text-success focus:valid:caret-success;
+    border: solid 1.5px rgb(var(--color-text) / 0.2);
+
+    input {
+      @apply px-4 py-2 bg-transparent text-center text-text rounded resize-none focus:outline-none;
+    }
   }
 
   .btc-textarea {

@@ -1,12 +1,10 @@
 export interface orderDetailsModel {
   id?: number;
-  fullName?: string;
-  type?: string;
+  phone?: string;
+  price?: number;
   message?: string;
-  zipCode?: string;
+  address?: string;
   receiverName?: string;
   receiverPhone?: string;
-  address?: string;
   status?: string;
-  price?: number;
 }
