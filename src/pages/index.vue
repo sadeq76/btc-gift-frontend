@@ -1,3 +1,23 @@
+<script lang="ts" setup>
+//content
+import landing from "@/content/landing.json";
+//fetch
+import { useGetBlogs } from "@/api/blog/blogs";
+// types
+import { NavigationFailure } from "vue-router";
+import Blogs from "@/models/blogs";
+
+const router = useRouter();
+const goToOrderPage = (): Promise<void | NavigationFailure> =>
+  router.push("order/create/unknown");
+
+const blogs = ref<Blogs[]>();
+
+onMounted(() => {
+  useGetBlogs("4", "0").then((response) => (blogs.value = response.result));
+});
+</script>
+
 <template>
   <div class="w-full flex flex-col justify-center items-center">
     <!-- hero section -->
@@ -32,7 +52,7 @@
           class="px-4 pt-4 absolute bottom-0 w-16 overflow-hidden flex flex-col"
         >
           <a
-            v-for="(account, index) in socialAccounts"
+            v-for="(account, index) in landing.socialAccounts"
             :key="index"
             :href="'http://' + account.path"
           >
@@ -48,7 +68,7 @@
       <div class="p-4 relative bg-test h-fit w-full">
         <dl class="flex justify-between items-center">
           <data
-            v-for="(counter, index) in counters"
+            v-for="(counter, index) in landing.counters"
             :key="index"
             value="counter.value"
             class="w-1/3 overflow-hidden text-ellipsis"
@@ -123,7 +143,7 @@
       >
         <dl class="flex justify-between items-center">
           <data
-            v-for="(counter, index) in counters"
+            v-for="(counter, index) in landing.counters"
             :key="index"
             value="counter.value"
           >
@@ -146,8 +166,7 @@
         با مبالغ متنوع
       </h2>
       <p class="mt-4 text-center">
-        بی تی سی گیفت یک کارت هدیه حاوی یک کلید عمومی بیت کوین است که به مخاطب
-        شما اجازه میدهد به راحتی کیف پول دیجیتال خود را شارژ کند
+        {{ landing.cardsSectionDescription }}
       </p>
       <MobileCardsSlider class="mt-4" />
     </section>
@@ -163,17 +182,16 @@
               گیفت ؟
             </h2>
             <p class="mt-4">
-              ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به
-              دو عامل کلیدی توجه داشته باشیم
+              {{ landing.whyUsDescription }}
             </p>
           </div>
           <span class="icon-angle-left max-md:hidden flex justify-end"></span>
         </div>
         <div
-          v-for="(item, index) in whyus"
+          v-for="(item, index) in landing.whyus"
           :key="index"
           :class="`md:w-1/${
-            whyus.length + 1
+            landing.whyus.length + 1
           } max-md:mt-4 p-2 bg-background rounded-lg flex flex-col max-md:items-center md:mr-4`"
         >
           <div
@@ -210,85 +228,6 @@
     <BaseFooter></BaseFooter>
   </div>
 </template>
-<script lang="ts" setup>
-import landing from "../content/landing.json";
-
-import imageModel from "../models/image.model";
-import counterModel from "../models/counter.model";
-import whyusModel from "../models/whyus.model";
-
-import { fetchData } from "../composable/fetch";
-
-// types
-import { NavigationFailure } from "vue-router";
-
-// images
-//@ts-ignore
-import image1 from "../assets/images/image1.jpg";
-//@ts-ignore
-import image2 from "../assets/images/image2.jpg";
-//@ts-ignore
-import image3 from "../assets/images/image3.jpg";
-
-const socialAccounts = [
-  {
-    name: "telegram",
-    path: "",
-  },
-  {
-    name: "insta",
-    path: "",
-  },
-  {
-    name: "whatsapp",
-    path: "",
-  },
-  {
-    name: "facebook",
-    path: "",
-  },
-];
-
-const images = reactive<imageModel[]>([
-  { name: "image1.jpg", title: "بزرگترین فروشگاه بین المللی کارت هدیه" },
-  { name: "image2.jpg", title: "سلام خدمت دوستدارن سایت" },
-  { name: "image3.jpg", title: "اینجانب هیچگونه فعالیتی در زمینه وب" },
-]);
-const counters = reactive<counterModel[]>([
-  { title: "رضایت مشتری از خرید", value: "95", postfix: "درصد" },
-  { title: "مشتریان ما", value: "89", postfix: "هزار" },
-  { title: "تعداد خرید", value: "۹۹", postfix: "میلیون" },
-]);
-const whyus = reactive<whyusModel[]>([
-  {
-    icon: "shield",
-    title: "خریدی امن و مطمیٔن",
-    description:
-      "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
-  },
-  {
-    icon: "rocket",
-    title: "سرعت و سهولت سفارش",
-    description:
-      "ما در بی تی سی گیفت سعی داشته ایم که علاوه بر جلب رضایت مشتری به دو عامل کلیدی توجه داشته باشیم",
-  },
-]);
-
-const router = useRouter();
-const goToOrderPage = (): Promise<void | NavigationFailure> =>
-  router.push("order/create/unknown");
-
-let blogs = ref<any[]>();
-
-onMounted(() => {
-  fetchData({
-    url: "/blog?offset=0&limit=4",
-  }).then((res) => {
-    blogs.value = res;
-  });
-});
-</script>
-
 <style lang="scss" module="TheLanding">
 .hero-section {
   height: min(177vw, 768px);

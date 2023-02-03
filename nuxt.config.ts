@@ -1,11 +1,13 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+import { apiBase } from "./src/config/develop";
+
 export default defineNuxtConfig({
   ssr: false,
-  // runtimeConfig: {
-  //   public: {
-  //     apiBase: "",
-  //   },
-  // },
+  runtimeConfig: {
+    public: {
+      apiBase: apiBase,
+    },
+  },
 
   // appConfig: {
   //   baseApi: "www.api.btcgift.shop/",

@@ -40,16 +40,15 @@
       </div>
     </div>
     <h2 class="mt-4 text-center">{{ blog.title || "بدون عنوان" }}</h2>
-    <p class="mt-4 text-center">{{ blog.description || "بدون توضیحات" }}</p>
+    <p class="mt-4 text-center line-clamp-4">
+      {{ blog.summary || "بدون توضیحات" }}
+    </p>
   </div>
 </template>
 <script lang="ts" setup>
-import BlogModel from "../models/blog.model";
-interface Props {
-  blogs: BlogModel[];
-}
+import Blogs from "../models/blogs";
 
-const props = defineProps<Props>();
+const props = defineProps<{ blogs: Blogs[] }>();
 
 let slideIndex = ref<number>(0);
 

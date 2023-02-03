@@ -1,4 +1,4 @@
-export default interface whyusModel {
+export default interface WhyUs {
   icon: string;
   title: string;
   description: string;

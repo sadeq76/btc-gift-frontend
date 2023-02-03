@@ -30,7 +30,7 @@
                 'mt-2': true,
               }"
             >
-              {{ convertToShamsi(blog.creation_date) }}
+              {{ convertToShamsi(blog.date_created) }}
             </p>
             <p
               :class="{
@@ -38,7 +38,7 @@
                 'mr-4 mt-4 line-clamp-2': index !== 0,
               }"
             >
-              {{ blog.description }}
+              {{ blog.summary }}
             </p>
             <div class="grow flex justify-end items-end">
               <button @click="goToBlog(blog.id)" class="btc-icon-button mt-4">
@@ -56,12 +56,11 @@
 <script setup lang="ts">
 import { NavigationFailure } from "vue-router";
 import { convertToShamsi } from "../composable/helpers";
-import BlogModel from "../models/blog.model";
-interface Props {
-  blogs: BlogModel[];
-}
 
-const props = defineProps<Props>();
+//types
+import Blogs from "../models/blogs";
+
+const props = defineProps<{ blogs: Blogs[] }>();
 
 const router = useRouter();
 const goToBlog = (id): Promise<void | NavigationFailure> =>

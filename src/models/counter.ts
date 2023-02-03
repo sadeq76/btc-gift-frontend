@@ -1,4 +1,4 @@
-export default interface counterModel {
+export default interface Counter {
   title: string;
   value: string;
   postfix: string;
