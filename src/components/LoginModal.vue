@@ -9,7 +9,17 @@
           @submit.prevent="submit"
         >
           <h1>ورود به سیستم</h1>
-          <p class="my-4">لطفا برای ورود اطلاعات زیر را وارد نمایید</p>
+          <p class="my-4">
+            {{ !step ? login.step1Description : login.step2Description }}
+          </p>
+          <p
+            v-if="step"
+            class="text-center flex justify-center items-center align-middle"
+            @click="editNumber"
+          >
+            <span class="text-lg font-bold">{{ phoneNumber }}</span>
+            <span class="icon-info mr-2"></span>
+          </p>
           <input
             v-if="!step"
             v-model="input"
@@ -51,44 +61,65 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuth } from "../composable/auth";
-import { fetchData } from "../composable/fetch";
-import { persianToEnglish } from "../composable/helpers";
-import { openSnackbar, useModal } from "../composable/state";
+//content
+import login from "@/content/login.json";
+
+//fetch
+import { usePostNumber } from "@/api/otp";
+import { usePostOtp } from "@/api/login";
+
+//types
+import Otp from "@/models/otp";
+import Login from "@/models/login";
+
+import { useAuth } from "@/composable/states/auth";
+import { persianToEnglish } from "@/composable/helpers/numbers";
+import { openSnackbar, useModal } from "@/composable/states/snackbar";
 
 const isOpen = useModal();
+
+const phoneNumber = ref<string>("");
 
 const input = ref<string>("");
 
 const step = ref<number>(0);
 
-let data = null;
-let pending = null;
-let error = null;
-let refresh = null;
+const editNumber = function () {
+  step.value = 0;
+  input.value = phoneNumber.value;
+};
 
 const submit = async function () {
   if (!step.value) {
-    fetchData({
-      url: "/login",
-      method: "POST",
-      body: persianToEnglish(input.value),
-    }).then((res) => {
-      openSnackbar(res, "success");
-      input.value = "";
-      step.value = 1;
-    });
-  } else {
-    fetchData({
-      url: "/otp",
-      method: "POST",
-      body: persianToEnglish(input.value),
-    }).then((res) => {
-      localStorage.setItem("token", res.token);
+    usePostNumber({ phone_number: persianToEnglish(input.value) }).then(
+      (response: Otp) => {
+        openSnackbar(response.detail, "success");
+        phoneNumber.value = input.value;
+        input.value = "";
+        step.value = 1;
+      }
+    );
+  } else if (step.value === 1) {
+    usePostOtp({
+      otp: persianToEnglish(input.value),
+      phone_number: phoneNumber.value,
+    }).then((response: Login) => {
+      const profile = {
+        id: response.id,
+        fullName: response.full_name,
+        isMale: response.is_male,
+        phoneNumber: response.phone_number,
+        birthDate: response.birth_date,
+        dateJoined: response.date_joined,
+        lastLogin: response.last_login,
+      };
+      localStorage.setItem("accessToken", response.access_token);
+      localStorage.setItem("profile", JSON.stringify(profile));
       isOpen.value = false;
       useAuth().value = true;
-      openSnackbar("خوش آمدید", "success");
+      openSnackbar(login.welcome, "success");
     });
+  } else {
   }
 };
 </script>

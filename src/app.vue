@@ -19,8 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from "./composable/auth";
-import { useSnackbar, useModal } from "./composable/state";
+//fetch
+import { useGetProfile } from "@/api/profile";
+
+import { useAuth } from "@/composable/states/auth";
+import { useSnackbar, useModal } from "@/composable/states/snackbar";
 const modalIsOpen = useModal();
 const snackbarIsOpen = useSnackbar();
 const isLogin = useAuth();
@@ -35,6 +38,12 @@ if (
 if (process.client && "theme" in localStorage) {
   document.documentElement.setAttribute("data-mode", localStorage.theme);
 }
+
+onMounted(() => {
+  !localStorage.profile && useAuth().value
+    ? useGetProfile().then((response) => console.log(response))
+    : undefined;
+});
 </script>
 
 <style lang="scss" scoped>

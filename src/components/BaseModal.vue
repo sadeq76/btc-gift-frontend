@@ -18,7 +18,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useModal } from "../composable/state";
+import { useModal } from "@/composable/states/snackbar";
 
 const isOpen = useModal();
 const closeModal = () => (isOpen.value = false);

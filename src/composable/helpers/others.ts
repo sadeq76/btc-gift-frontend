@@ -61,26 +61,3 @@ export const translateCardTitle = (status: string): string => {
     ? "برنزی"
     : "نامعلوم";
 };
-
-export const persianToEnglish = (input: any): string =>
-  input.toString().replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
-
-export const convertToRls = (input: number) =>
-  new Intl.NumberFormat("fa-IR").format(input);
-
-export const convertToShamsi = (input: string) => {
-  let options: any = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  return new Date(input).toLocaleDateString("fa-IR", options);
-};
-
-export const getAssets = (path: string): string => {
-  const glob = import.meta.glob("~/assets/images/*/*", {
-    eager: true,
-  });
-
-  return glob[`/assets/${path}`]["default"];
-};

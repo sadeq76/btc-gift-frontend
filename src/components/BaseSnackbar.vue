@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import { Container } from "postcss";
-import { useSnackbar, useSnackbarContent } from "../composable/state";
+import { useSnackbar, useSnackbarContent } from "@/composable/states/snackbar";
 const isOpen = useSnackbar();
 const content = useSnackbarContent();
 const closeSnackbar = () => (isOpen.value = false);

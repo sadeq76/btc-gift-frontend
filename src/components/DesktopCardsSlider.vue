@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { getAssets } from "~~/src/composable/helpers";
+import { getAssets } from "~~/src/composable/helpers/files";
 import { useRouter } from "vue-router";
 
 const router = useRouter();

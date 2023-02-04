@@ -11,9 +11,9 @@
     "
   >
     <div class="flex flex-col items-start max-md:w-full max-md:items-center">
-      <h2>لینک ها</h2>
+      <h2>{{ footer.links }}</h2>
       <NuxtLink
-        v-for="(page, index) in pages"
+        v-for="(page, index) in footer.pages"
         :key="index"
         class="mt-4 opacity-50"
         :to="page.path"
@@ -27,26 +27,32 @@
         max-md:w-full max-md:items-center max-md:mt-4
       "
     >
-      <h2>تماس با ما</h2>
-      <a dir="ltr" class="mt-4 opacity-50" href="tel:+9393557744"
-        >+ 93 93 55 77 44</a
-      >
+      <h2>{{ footer.contactUs }}</h2>
       <a
         dir="ltr"
         class="mt-4 opacity-50"
-        href="mailto:sadeqshahmoradi76@gmail.com"
-        >sadeqshahmoradi76@gmail.com</a
+        :href="`tel:${footer.phoneNumber}`"
+        >{{ footer.phoneNumber }}</a
       >
-      <address class="flex opacity-50 mt-4 max-md:m-4">
-        <h3 class="ml-2">آدرس:</h3>
-        <p>یجایی دور خیلی دور دور تر از آنکه تو بدانی یا بتوانی بخواهی</p>
+      <a dir="ltr" class="mt-4 opacity-50" :href="`mailto:${footer.email}`">
+        {{ footer.email }}
+      </a>
+      <address class="mt-4 max-md:m-4">
+        <NuxtLink
+          class="flex opacity-50"
+          :to="footer.address.link"
+          target="_blank"
+        >
+          <h3 class="ml-2">آدرس:</h3>
+          <p>{{ footer.address.text }}</p>
+        </NuxtLink>
       </address>
     </div>
 
     <div class="flex max-md:hidden">
       <h2 class="ml-2">ما را دنبال کنید:</h2>
       <span
-        v-for="(socialAccount, index) in socialAccounts"
+        v-for="(socialAccount, index) in footer.socialAccounts"
         :key="index"
         :class="`icon-${socialAccount.name} text-primary`"
       ></span>
@@ -71,29 +77,8 @@
   </footer>
 </template>
 <script lang="ts" setup>
-import pageModel from "../models/page.model";
-
-const pages = reactive<pageModel[]>([
-  { title: "خانه", path: "/" },
-  { title: "بلاگ ها", path: "/blog/list" },
-  { title: "سوالات متداول", path: "/faq" },
-]);
-const socialAccounts = [
-  {
-    name: "telegram",
-    path: "",
-  },
-  {
-    name: "insta",
-    path: "",
-  },
-  {
-    name: "whatsapp",
-    path: "",
-  },
-  {
-    name: "facebook",
-    path: "",
-  },
-];
+//contents
+import footer from "@/content/footer.json";
+//types
+import Page from "@/models/page";
 </script>

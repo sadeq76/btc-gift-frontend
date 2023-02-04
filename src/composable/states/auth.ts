@@ -1,12 +1,14 @@
-import { fetchData } from "./fetch";
-import { openSnackbar } from "./state";
+import { useGetLogout } from "@/api/logout";
+import { openSnackbar } from "./snackbar";
 
 export const useAuth = () => useState<boolean>("isLogin", () => getStatus());
 
-export const logout = () => {
-  fetchData({ url: "/logout" })
+export const useLogout = () => {
+  useGetLogout()
     .then(() => {
       useAuth().value = false;
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("profile");
       openSnackbar("از سیستم خارج شدید", "info");
       useRouter().push("/");
     })
@@ -15,6 +17,6 @@ export const logout = () => {
 
 const getStatus = () => {
   if (process.client) {
-    return !!localStorage.getItem("token");
+    return !!localStorage.getItem("accessToken");
   }
 };

@@ -77,17 +77,18 @@
 </template>
 <script lang="ts" setup>
 import { orderDetailsModel } from "~~/src/models/order-details.model";
+import { convertToRls } from "@/composable/helpers/numbers";
 import {
   translateKey,
   statusColor,
   translateStatus,
   translateCardTitle,
-  convertToRls,
-} from "~/composable/helpers";
-import { fetchData } from "~~/src/composable/fetch";
-import { logout } from "~~/src/composable/auth";
+} from "@/composable/helpers/others";
 
-const logoutUser = () => logout();
+import { fetchData } from "@/composable/fetch";
+import { useLogout } from "@/composable/states/auth";
+
+const logoutUser = () => useLogout();
 
 let orders = ref<orderDetailsModel[]>();
 

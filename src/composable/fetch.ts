@@ -1,5 +1,5 @@
-import { openSnackbar } from "../composable/state";
-import { useAuth } from "./auth";
+import { openSnackbar } from "@/composable/states/snackbar";
+import { useAuth } from "@/composable/states/auth";
 
 interface FetchParamsModel {
   url: string;

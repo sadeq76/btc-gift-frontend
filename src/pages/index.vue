@@ -2,7 +2,7 @@
 //content
 import landing from "@/content/landing.json";
 //fetch
-import { useGetBlogs } from "@/api/blog/blogs";
+import { useGetBlogs } from "@/api/blogs";
 // types
 import { NavigationFailure } from "vue-router";
 import Blogs from "@/models/blogs";
@@ -13,9 +13,9 @@ const goToOrderPage = (): Promise<void | NavigationFailure> =>
 
 const blogs = ref<Blogs[]>();
 
-onMounted(() => {
-  useGetBlogs("4", "0").then((response) => (blogs.value = response.result));
-});
+useGetBlogs({ limit: "4", offset: "0" }).then(
+  (response) => (blogs.value = response.result)
+);
 </script>
 
 <template>
@@ -228,6 +228,7 @@ onMounted(() => {
     <BaseFooter></BaseFooter>
   </div>
 </template>
+
 <style lang="scss" module="TheLanding">
 .hero-section {
   height: min(177vw, 768px);

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const comment = ref<string>("");
+
+const submitComment = (): void => {};
+</script>
+
 <template>
   <div class="w-full flex flex-col items-center">
     <article class="max-w-1366 py-4 w-full flex max-md:flex-wrap px-4">
@@ -341,12 +347,6 @@
     <BaseFooter></BaseFooter>
   </div>
 </template>
-
-<script setup lang="ts">
-const comment = ref<string>("");
-
-const submitComment = (): void => {};
-</script>
 
 <style lang="scss" module="TheBlog">
 </style>

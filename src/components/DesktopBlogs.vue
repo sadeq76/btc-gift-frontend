@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { NavigationFailure } from "vue-router";
+import { convertToShamsi } from "@/composable/helpers/dates";
+
+//types
+import Blogs from "../models/blogs";
+
+const props = defineProps<{ blogs: Blogs[] }>();
+
+const router = useRouter();
+const goToBlog = (id): Promise<void | NavigationFailure> =>
+  router.push(`blog/${id}`);
+</script>
+
 <template>
   <div>
     <h2 class="mb-4">مقاله و خبرنامه ها</h2>
@@ -40,7 +54,8 @@
             >
               {{ blog.summary }}
             </p>
-            <div class="grow flex justify-end items-end">
+            <div class="grow flex justify-between items-end">
+              <div></div>
               <button @click="goToBlog(blog.id)" class="btc-icon-button mt-4">
                 <span class="text-xl"> بیشتر </span>
                 <span class="icon-angle-left text-primary"></span>
@@ -52,20 +67,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { NavigationFailure } from "vue-router";
-import { convertToShamsi } from "../composable/helpers";
-
-//types
-import Blogs from "../models/blogs";
-
-const props = defineProps<{ blogs: Blogs[] }>();
-
-const router = useRouter();
-const goToBlog = (id): Promise<void | NavigationFailure> =>
-  router.push(`blog/${id}`);
-</script>
 
 <style lang="scss" module="DesktopBlogs">
 .blogs {

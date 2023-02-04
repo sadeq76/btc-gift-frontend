@@ -110,9 +110,9 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import { useAuth } from "../composable/auth";
-import { useModal } from "../composable/state";
-import pageModel from "../models/page.model";
+import { useAuth } from "@/composable/states/auth";
+import { useModal } from "@/composable/states/snackbar";
+import Page from "@/models/page";
 
 const router = useRouter();
 
@@ -125,7 +125,7 @@ onMounted(() => {
       : false;
 });
 
-const pages = reactive<pageModel[]>([
+const pages = reactive<Page[]>([
   { title: "خانه", path: "/" },
   { title: "بلاگ ها", path: "/blog/list" },
   { title: "سوالات متداول", path: "/faq" },

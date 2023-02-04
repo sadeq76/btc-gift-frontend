@@ -126,7 +126,7 @@
 </template>
 <script lang="ts" setup>
 import { orderDetailsModel } from "../../../models/order-details.model";
-import { translateKey } from "~/composable/helpers";
+import { translateKey } from "~/composable/helpers/others";
 
 const model = reactive<orderDetailsModel>({
   phone: "",

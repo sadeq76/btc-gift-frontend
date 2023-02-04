@@ -2,7 +2,6 @@
 import { apiBase } from "./src/config/develop";
 
 export default defineNuxtConfig({
-  ssr: false,
   runtimeConfig: {
     public: {
       apiBase: apiBase,
