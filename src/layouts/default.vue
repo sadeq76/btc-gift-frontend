@@ -29,11 +29,17 @@
             modes.get(!darkMode) == 'dark' ? 'moon' : 'sun'
           } text-primary cursor-pointer`"
         ></span>
-        <a
+
+        <button
+          v-if="!isLogin"
           @click="profile"
           class="flex justify-end items-center"
-          href="#profile-pop-up"
         >
+          <span :class="`icon-account text-primary ml-4 cursor-pointer`">
+          </span>
+        </button>
+
+        <a v-else class="flex justify-end items-center" href="#profile-pop-up">
           <span
             :class="`icon-account text-primary ml-4 cursor-pointer`"
             class="relative"
@@ -43,6 +49,7 @@
             </BasePopUp>
           </span>
         </a>
+
         <button
           @click="goToOrderPage"
           class="h-full btc-primary-button whitespace-nowrap"
@@ -50,9 +57,15 @@
           ثبت سفارش
         </button>
       </div>
-      <button @click="toggleMenu" class="btc-icon-button md:hidden">
-        <span class="icon-menu"></span>
-      </button>
+
+      <div class="flex items-center md:hidden">
+        <button @click="profile" class="btc-icon-button ml-4">
+          <span class="icon-account"></span>
+        </button>
+        <button @click="toggleMenu" class="btc-icon-button">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
     </nav>
     <transition
       enter-active-class="animate-move-in"
@@ -95,12 +108,6 @@
             class="my-4"
           >
             <NuxtLink :to="page.path">{{ page.title }}</NuxtLink>
-          </li>
-          <li
-            @click="profile"
-            class="my-4 text-base cursor-pointer font-medium"
-          >
-            {{ isLogin ? "لیست سفارشات" : "ورود" }}
           </li>
         </ul>
       </div>

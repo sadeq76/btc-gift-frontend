@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main flex flex-col justify-center items-center">
     <NuxtLayout />
     <NuxtLoadingIndicator color="orange" />
     <NuxtPage />

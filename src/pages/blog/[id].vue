@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { useGetBlog } from "~~/src/api/blog";
+
+import { useRoute } from "vue-router";
+
 const comment = ref<string>("");
 
 const submitComment = (): void => {};
+
+useGetBlog(useRoute().params.id).then((response) => console.log(response));
 </script>
 
 <template>

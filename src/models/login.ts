@@ -1,6 +1,7 @@
 export default interface Login {
   id: number;
-  full_name: string;
+  first_name: string;
+  last_name: string;
   phone_number: string;
   is_male: boolean | null;
   birth_date: string | null;

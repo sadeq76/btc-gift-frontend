@@ -14,7 +14,14 @@
           </p>
           <p
             v-if="step"
-            class="text-center flex justify-center items-center align-middle"
+            class="
+              text-center
+              flex
+              justify-center
+              items-center
+              align-middle
+              mb-4
+            "
             @click="editNumber"
           >
             <span class="text-lg font-bold">{{ phoneNumber }}</span>
@@ -43,11 +50,12 @@
             id="code"
             placeholder="کد ارسالی"
             aria-label="کد ارسالی"
-            class="btc-text-field w-full mt-4 text-center"
+            class="btc-text-field w-full my-4 text-center"
             maxlength="4"
             required
             oninvalid="this.setCustomValidity('لطفا کد ارسال شده به شماره بالا را وارد کنید')"
             oninput="this.setCustomValidity('')"
+            autocomplete="off"
           />
         </form>
       </div>
@@ -106,14 +114,15 @@ const submit = async function () {
     }).then((response: Login) => {
       const profile = {
         id: response.id,
-        fullName: response.full_name,
+        firstName: response.first_name,
+        lastName: response.last_name,
         isMale: response.is_male,
         phoneNumber: response.phone_number,
         birthDate: response.birth_date,
         dateJoined: response.date_joined,
         lastLogin: response.last_login,
       };
-      localStorage.setItem("accessToken", response.access_token);
+      localStorage.setItem("accessToken", `bearer ${response.access_token}`);
       localStorage.setItem("profile", JSON.stringify(profile));
       isOpen.value = false;
       useAuth().value = true;

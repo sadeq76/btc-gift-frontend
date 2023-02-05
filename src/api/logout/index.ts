@@ -1,5 +1,5 @@
 import useFetchData from "@/api";
 
-const path = "logout/";
+const path = "user/logout/";
 
-export const useGetLogout = () => useFetchData(path, "GET");
+export const useGetLogout = () => useFetchData(path, "POST");
