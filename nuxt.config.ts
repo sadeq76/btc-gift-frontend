@@ -2,16 +2,6 @@
 import { apiBase } from "./src/config/develop";
 
 export default defineNuxtConfig({
-  runtimeConfig: {
-    public: {
-      apiBase: apiBase,
-    },
-  },
-
-  // appConfig: {
-  //   baseApi: "www.api.btcgift.shop/",
-  // },
-
   srcDir: "src/",
 
   app: {

@@ -13,7 +13,7 @@ export const counterSimplification = function (counter: number = 0) {
 
   for (const item of lookup) {
     if (counter > item.divider) {
-      return (counter / item.divider).toFixed(1) + item.suffix;
+      return (counter / item.divider).toFixed(0) + item.suffix;
     }
   }
   return counter;
