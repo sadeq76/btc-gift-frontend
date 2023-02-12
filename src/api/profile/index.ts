@@ -1,10 +1,10 @@
-import useFetchData from "@/api";
+import useApi from "@/api";
 
 const path = "user/profile/";
 
-export const useGetProfile = () => useFetchData(path, "GET");
+export const useGetProfile = () => useApi(path, "GET");
 
 export const usePostProfile = (body) =>
-  useFetchData(path, "POST", {
+  useApi(path, "PUT", {
     body,
   });

@@ -4,9 +4,7 @@
       v-for="(image, index) in images"
       :key="index"
       ref="cards"
-      :class="`c-${
-        index + 1
-      } card rounded select-none cursor-pointer transition`"
+      :class="`c-${index + 1} rounded select-none cursor-pointer transition`"
       @click="next"
       @mouseover="pauseInterval"
       @mouseleave="playInterval"
@@ -66,16 +64,12 @@ const next = (event) => {
   }
 };
 </script>
-<style >
+<style scoped>
 .container {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
-}
-
-.transition {
-  transition: all 0.3s ease-out;
 }
 
 .c-1 {

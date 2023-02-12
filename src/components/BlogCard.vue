@@ -17,35 +17,37 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="shadow rounded p-4">
-    <img class="aspect-video w-full" :src="props.cover" :alt="props.title" />
-    <h3 class="mt-2">{{ props.title }}</h3>
-    <p class="mt-2 opacity-50">{{ convertToShamsi(props.date_created) }}</p>
-    <p class="mt-2 line-clamp-2">
-      {{ props.summary }}
-    </p>
-    <div class="mt-4 flex justify-between items-center">
-      <div class="flex items-center">
-        <!-- <p class="flex items-center text-sm whitespace-nowrap">
+  <div>
+    <div class="shadow rounded p-4">
+      <img class="aspect-video w-full" :src="props.cover" :alt="props.title" />
+      <h3 class="mt-2">{{ props.title }}</h3>
+      <p class="mt-2 opacity-50">{{ convertToShamsi(props.date_created) }}</p>
+      <p class="mt-2 line-clamp-2">
+        {{ props.summary }}
+      </p>
+      <div class="mt-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <!-- <p class="flex items-center text-sm whitespace-nowrap">
           <span class="icon-insta text-base ml-2"></span>
           {{ counterSimplification(props.like_count) }}
         </p> -->
-        <p class="flex items-center text-sm whitespace-nowrap">
-          <span class="icon-insta text-base mx-2"></span>
-          {{ counterSimplification(props.comment_count) }}
-        </p>
-        <p class="flex items-center text-sm whitespace-nowrap">
-          <span class="icon-insta text-base mx-2"></span>
-          {{ counterSimplification(props.view_count) }}
-        </p>
+          <p class="flex items-center text-sm whitespace-nowrap">
+            <span class="icon-insta text-base mx-2"></span>
+            {{ counterSimplification(props.comment_count) }}
+          </p>
+          <p class="flex items-center text-sm whitespace-nowrap">
+            <span class="icon-insta text-base mx-2"></span>
+            {{ counterSimplification(props.view_count) }}
+          </p>
+        </div>
+        <nuxt-link
+          :to="`/blog/${props.id}`"
+          class="text-primary flex items-center justify-end"
+        >
+          مشاهده بلاگ
+          <span class="icon-angle-left mr-2 text-primary"></span>
+        </nuxt-link>
       </div>
-      <nuxt-link
-        :to="`/blog/${props.id}`"
-        class="text-primary flex items-center justify-end"
-      >
-        مشاهده بلاگ
-        <span class="icon-angle-left mr-2 text-primary"></span>
-      </nuxt-link>
     </div>
   </div>
 </template>

@@ -27,6 +27,8 @@ const config = {
       info: "rgb(var(--color-info) / <alpha-value>)",
       warn: "rgb(var(--color-warn) / <alpha-value>)",
       error: "rgb(var(--color-error) / <alpha-value>)",
+      blue: "rgb(var(--color-blue) / <alpha-value>)",
+      pink: "rgb(var(--color-pink) / <alpha-value>)",
       transparent: "transparent",
       current: "currentColor",
       white: "#fff",

@@ -11,7 +11,7 @@ export const useGetBlogs = ({
 }) =>
   useFetchData(path, "GET", {
     queryParams: {
-      limit,
-      offset,
+      ...(limit ? { limit } : {}),
+      ...(offset ? { offset } : {}),
     },
   });

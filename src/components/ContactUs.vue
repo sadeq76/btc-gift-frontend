@@ -52,14 +52,7 @@
       <input type="file" class="hidden" />
       <div class="flex mt-8">
         <button
-          class="
-            ml-2
-            w-full
-            btc-secondary-button
-            flex
-            justify-center
-            items-center
-          "
+          class="ml-2 w-full btc-secondary-button flex justify-center items-center"
         >
           <span class="icon-upload text-primary ml-2"></span>
           آپلود فایل
@@ -69,16 +62,10 @@
         </button>
       </div>
     </form>
-    <div class="basis-1/2 bg-overlay max-md:hidden">
-      <!-- <img
-          class="w-full h-full object-cover"
-          src="~/assets/images/image3.jpg"
-          alt="contact us"
-        /> -->
-    </div>
+    <div class="basis-1/2 bg-overlay max-md:hidden"></div>
   </section>
 </template>
-  <script lang="ts" setup>
+<script lang="ts" setup>
 const fullname = ref<string>("");
 const email = ref<string>("");
 const message = ref<string>("");

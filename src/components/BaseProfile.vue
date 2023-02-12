@@ -24,7 +24,9 @@ const profile = computed(() => JSON.parse(localStorage.getItem("profile")));
       <p class="whitespace-nowrap font-bold">
         {{ profile.first_name + profile.last_name || "بدون نام" }}
       </p>
-      <span class="icon-info text-base mr-2 text-primary"></span>
+      <NuxtLink :to="{ name: 'profile-edit' }">
+        <span class="icon-info text-base mr-2 text-primary"></span>
+      </NuxtLink>
     </div>
     <p class="mt-2 whitespace-nowrap opacity-50 text-text">
       {{ profile.phoneNumber }}
@@ -50,7 +52,7 @@ const profile = computed(() => JSON.parse(localStorage.getItem("profile")));
         "
       >
         <div class="flex items-center">
-          <span :class="`icon-${action.icon} text-primary text-md`"></span>
+          <!-- <span :class="`icon-${action.icon} text-primary text-md`"></span> -->
           <p
             class="
               mr-2

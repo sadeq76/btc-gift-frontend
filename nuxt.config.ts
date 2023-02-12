@@ -2,6 +2,8 @@
 import { apiBase } from "./src/config/develop";
 
 export default defineNuxtConfig({
+  ssr: false,
+
   srcDir: "src/",
 
   app: {

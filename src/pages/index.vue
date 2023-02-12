@@ -77,13 +77,7 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
               {{ counter.value }}%
             </dt>
             <dd
-              class="
-                w-full
-                overflow-hidden
-                whitespace-nowrap
-                font-thin
-                text-center text-ellipsis
-              "
+              class="w-full overflow-hidden whitespace-nowrap font-thin text-center text-ellipsis"
             >
               {{ counter.title }}
             </dd>
@@ -99,15 +93,7 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
     >
       <div class="grow overflow-hidden flex items-center mt-4">
         <div
-          class="
-            w-full
-            lg:w-1/2
-            max-lg:text-center
-            h-full
-            max-h-80
-            flex flex-col
-            justify-between
-          "
+          class="w-full lg:w-1/2 max-lg:text-center h-full max-h-80 flex flex-col justify-between"
         >
           <div>
             <h1 class="mb-5">
@@ -159,7 +145,7 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
       </div>
     </header>
     <!-- Cards Slider Section -->
-    <section class="m-4 px-8 flex flex-col items-center lg:hidden">
+    <section class="w-full m-4 flex flex-col items-center lg:hidden">
       <h2 class="text-center">
         گیفت کارت های
         <span class="text-primary">بی تی سی</span>
@@ -168,7 +154,9 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
       <p class="mt-4 text-center">
         {{ landing.cardsSectionDescription }}
       </p>
-      <MobileCardsSlider class="mt-4" />
+      <div class="w-full">
+        <CardsSlider class="mt-4" />
+      </div>
     </section>
     <!-- Why Us Section -->
     <div class="max-w-1366 md:px-8">
@@ -195,17 +183,7 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
           } max-md:mt-4 p-2 bg-background rounded-lg flex flex-col max-md:items-center md:mr-4`"
         >
           <div
-            class="
-              bg-primary-gradient
-              w-24
-              h-24
-              p-4
-              rounded-full
-              flex
-              justify-center
-              items-center
-              shadow-md shadow-primary
-            "
+            class="bg-primary-gradient w-24 h-24 p-4 rounded-full flex justify-center items-center shadow-md shadow-primary"
           >
             <span :class="`icon-${item.icon} text-background text-4xl`"></span>
           </div>
@@ -222,8 +200,6 @@ useGetBlogs({ limit: "4", offset: "0" }).then(
       :blogs="blogs"
       class="md:px-8 m-12 w-full max-w-1366 max-md:hidden"
     />
-    <!-- Contact us -->
-    <ContactUs />
     <!-- Footer -->
     <BaseFooter></BaseFooter>
   </div>

@@ -7,8 +7,10 @@
       enter-active-class="animate-zoom-in"
       leave-active-class="animate-zoom-out"
     >
-      <LoginModal v-if="modalIsOpen"
-    /></transition>
+      <BaseModal :dialog="modalIsOpen" @close="closeModal">
+        <LoginModal></LoginModal>
+      </BaseModal>
+    </transition>
     <transition
       enter-active-class="animate-zoom-in"
       leave-active-class="animate-zoom-out"
@@ -27,6 +29,8 @@ import { useSnackbar, useModal } from "@/composable/states/snackbar";
 const modalIsOpen = useModal();
 const snackbarIsOpen = useSnackbar();
 const isLogin = useAuth();
+
+const closeModal = () => (modalIsOpen.value = false);
 
 if (
   process.client &&

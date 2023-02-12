@@ -1,4 +1,3 @@
-
 <script lang="ts" setup>
 //helpers
 import { counterSimplification } from "@/composable/helpers/numbers";
@@ -16,26 +15,21 @@ useGetBlogs({ limit: "100", offset: "0" }).then(
 </script>
 
 <template>
-  <div class="md:px-4 w-full flex flex-col items-center">
+  <div class="w-full flex flex-col items-center">
     <div class="w-full max-w-1366 max-md:px-4">
       <h1 class="my-4">مقاله و خبرنامه ها</h1>
     </div>
     <div
       v-if="blogs && blogs.length"
-      class="max-w-1366 w-full relative flex flex-col justify-center"
+      class="max-w-1366 w-full relative flex flex-col justify-center md:px-4"
     >
       <img
-        class="w-full h-fit aspect-video max-lg:rounded-none"
+        class="w-full h-fit aspect-video max-md:rounded-none"
         :src="blogs[0].cover"
         :alt="blogs[0].title"
       />
       <div
-        class="
-          btc-card
-          mx-4
-          max-lg:left-4 max-lg:-translate-y-8
-          lg:absolute lg:w-2/5 lg:bottom-4 lg:right-4
-        "
+        class="btc-card mx-4 max-md:left-4 max-md:-translate-y-8 md:absolute md:w-2/5 md:bottom-4 md:right-4"
       >
         <h2>{{ blogs[0].title }}</h2>
         <p class="mt-2 opacity-50">
@@ -49,10 +43,6 @@ useGetBlogs({ limit: "100", offset: "0" }).then(
           <div class="flex items-center">
             <p class="flex items-center">
               <span class="icon-insta mx-2"></span>
-              {{ counterSimplification(blogs[0].like_count) }}
-            </p>
-            <p class="flex items-center">
-              <span class="icon-insta mx-2"></span>
               {{ counterSimplification(blogs[0].comment_count) }}
             </p>
             <p class="flex items-center">
@@ -61,13 +51,7 @@ useGetBlogs({ limit: "100", offset: "0" }).then(
             </p>
           </div>
           <button
-            class="
-              btc-icon-button
-              border-b-2 border-primary
-              flex
-              items-center
-              pr-2
-            "
+            class="btc-icon-button border-b-2 border-primary flex items-center pr-2"
           >
             مشاهده بلاگ
             <span class="icon-angle-left text-primary"></span>
@@ -81,6 +65,7 @@ useGetBlogs({ limit: "100", offset: "0" }).then(
         v-for="blog in blogs?.slice(1, blogs.length)"
         :key="blog.id"
         v-bind="{ ...blog }"
+        class="my-4 w-full px-4 md:w-1/2 md:odd:pr-4 md:odd:pl-2 md:even:pl-4 md:even:pr-2"
       ></BlogCard>
     </div>
   </div>

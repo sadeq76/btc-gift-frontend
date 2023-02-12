@@ -1,8 +1,8 @@
-import useFetchData from "@/api";
+import useApi from "@/api";
 
 const path = "user/login/";
 
 export const usePostOtp = (body) =>
-  useFetchData(path, "POST", {
+  useApi(path, "POST", {
     body,
   });

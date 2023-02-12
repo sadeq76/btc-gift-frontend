@@ -1,11 +1,14 @@
 <template>
-  <div class="w-full h-full flex flex-col justify-center items-center">
+  <div class="w-full h-main flex flex-col justify-center items-center">
     <div
       ref="progress"
       class="progress-bar top-14"
       :style="`--width-progress-bar: ${progressBarWidth}%`"
     ></div>
-    <form class="max-w-1366 w-full p-4" @submit.prevent="">
+    <div class="max-w-1366 w-full grow flex items-center">
+      <OrderFirstStep />
+    </div>
+    <!-- <form class="max-w-1366 w-full p-4" @submit.prevent="">
       <div class="w-full mb-8">
         <h1 class="mb-4">ثبت سفارش</h1>
         <p>{{ description }}</p>
@@ -121,7 +124,7 @@
           {{ step !== 4 ? "مرحله بعدی" : "پرداخت نهایی" }}
         </button>
       </div>
-    </form>
+    </form> -->
   </div>
 </template>
 <script lang="ts" setup>
@@ -161,5 +164,4 @@ const description = computed((): string =>
 const increase = () => model.price + 0.1;
 const descrease = () => model.price - 0.1;
 </script>
-<style lang="scss" module="TheCreateOrder">
-</style>
+<style lang="scss" module="TheCreateOrder"></style>

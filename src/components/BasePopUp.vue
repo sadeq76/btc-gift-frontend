@@ -14,6 +14,7 @@
       flex flex-col
       justify-start
       items-start
+      cursor-default
     "
     ref="popup"
   >

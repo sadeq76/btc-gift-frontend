@@ -8,7 +8,7 @@
       <div v-for="(faq, index) in faqs" :key="index">
         <details class="relative">
           <summary class="w-width font-bold cursor-pointer ml-4">
-            {{ faq.question }}
+            {{ faq?.question }}
             <span class="absolute left-0 top-0 icon-plus text-primary"></span>
           </summary>
           <p
@@ -20,7 +20,7 @@
               border-r-4 border-solid border-primary
             "
           >
-            {{ faq.answer }}
+            {{ faq?.answer }}
           </p>
           <span
             class="bg-background absolute left-0 top-0 icon-minus text-primary"
@@ -30,10 +30,16 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 <script lang="ts" setup>
 import faqModel from "../../models/faq.model";
-import { default as faqs } from "../../content/faq.json";
+import { useGetFaqs } from "@/api/faq";
+
+let faqs: any;
+
+await useGetFaqs().then((response) => {
+  faqs = response;
+});
 </script>
 <style lang="scss" module="TheFaq">
 </style>

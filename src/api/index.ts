@@ -10,9 +10,7 @@ const useApi = async function (
   method: "GET" | "POST" | "PUT",
   params?: ApiParams
 ) {
-  const url = new URL(apiBase + path);
-
-  return await useFetch(path, {
+  return await $fetch(path, {
     baseURL: apiBase,
     method,
     query: { ...params?.queryParams },
@@ -28,16 +26,6 @@ const useApi = async function (
 
 export default useApi;
 
-// return await useFetch(url.href, {
-//   method,
-//   query: { ...params?.queryParams },
-//   headers: {
-//     ...params?.headers,
-//     ...(useAuth().value
-//       ? { Authorization: localStorage.getItem("accessToken") }
-//       : {}),
-//   },
-//   body: params?.body,
 //   onResponse({ response }) {
 //     if (response.ok) {
 //       return response._data;

@@ -1,8 +1,10 @@
 import useFetchData from "@/api";
 
-const path = "user/profile/";
+const path = "user/address/";
 
-export const usePostOtp = (body) =>
+export const useGetAddress = () => useFetchData(path, "GET");
+
+export const usePostAddress = (body) =>
   useFetchData(path, "POST", {
     body,
   });

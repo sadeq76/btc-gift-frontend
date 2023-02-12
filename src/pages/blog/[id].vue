@@ -5,7 +5,7 @@ import { useRoute } from "vue-router";
 import Blog from "@/models/blog";
 import { useAuth } from "~~/src/composable/states/auth";
 
-let blog: any;
+let blog = ref<Blog>(null);
 const comment = ref<string>("");
 
 const isLogin = useAuth();
@@ -13,25 +13,15 @@ const isLogin = useAuth();
 const submitComment = (): void => {};
 
 await useGetBlog(useRoute().params.id).then((response) => {
-  blog = response.data;
+  blog.value = response;
 });
-console.log(blog);
 </script>
 
 <template>
   <div class="w-full flex flex-col items-center">
     <article class="max-w-1366 py-4 w-full flex max-md:flex-wrap px-4">
       <div
-        class="
-          btc-card
-          md:sticky
-          top-18
-          w-1/3
-          max-md:w-full
-          h-fit
-          md:ml-4
-          max-md:mb-4
-        "
+        class="btc-card md:sticky top-18 w-1/3 max-md:w-full h-fit md:ml-4 max-md:mb-4"
       >
         <h2>لیست مطالب</h2>
         <ul>
@@ -43,16 +33,16 @@ console.log(blog);
         </ul>
       </div>
       <div class="btc-card w-2/3 max-md:w-full h-fit">
-        <h1>{{ blog.title }}</h1>
+        <h1>{{ blog?.title }}</h1>
         <p class="my-4">
-          {{ blog.summary }}
+          {{ blog?.summary }}
         </p>
         <img
           class="w-full aspect-video mb-4"
-          :src="blog.cover"
-          :alt="blog.title"
+          :src="blog?.cover"
+          :alt="blog?.title"
         />
-        <p class="leading-8" v-html="blog.content"></p>
+        <p class="leading-8" v-html="blog?.content"></p>
       </div>
     </article>
     <section class="max-w-1366 w-full mb-4 px-4 max-md:hidden">
@@ -93,14 +83,14 @@ console.log(blog);
         </div>
       </form>
       <div
-        v-for="comment in blog.comments"
+        v-for="comment in blog?.comments"
         :key="comment.id"
         class="mt-4 rounded p-4 border border-text/20"
       >
         <div class="btc-avatar">
           <span class="icon-account text-background text-4xl"></span>
         </div>
-        <p class="mt-2">ناشناس</p>
+        <p class="mt-2">{{ comment.user.full_name }}</p>
         <p class="mt-4">
           {{ comment.text }}
         </p>
@@ -110,5 +100,4 @@ console.log(blog);
   </div>
 </template>
 
-<style lang="scss" module="TheBlog">
-</style>
+<style lang="scss" module="TheBlog"></style>
