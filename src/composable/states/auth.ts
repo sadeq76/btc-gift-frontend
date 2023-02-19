@@ -20,3 +20,10 @@ const getStatus = () => {
     return !!localStorage.getItem("accessToken");
   }
 };
+
+export const useClearUserData = function () {
+  localStorage.removeItem("profile");
+  localStorage.removeItem("accessToken");
+  useAuth().value = false;
+  openSnackbar("اطلاعات کاربری شما پاک شد", "info");
+};

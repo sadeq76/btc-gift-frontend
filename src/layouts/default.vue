@@ -73,18 +73,7 @@
     >
       <div
         v-if="isOpen"
-        class="
-          fixed
-          z-20
-          left-0
-          right-0
-          top-0
-          bottom-0
-          bg-background
-          flex
-          justify-center
-          items-center
-        "
+        class="fixed z-20 left-0 right-0 top-0 bottom-0 bg-background flex justify-center items-center"
       >
         <button
           @click="toggleMenu"
@@ -166,7 +155,7 @@ const profile = function () {
 };
 
 const goToOrderPage = function () {
-  router.push("order/create/unknown");
+  router.push({ name: "order-type", params: { type: "noset" } });
 };
 </script>
 

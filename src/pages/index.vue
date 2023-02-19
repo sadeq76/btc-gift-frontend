@@ -9,7 +9,7 @@ import Blogs from "@/models/blogs";
 
 const router = useRouter();
 const goToOrderPage = (): Promise<void | NavigationFailure> =>
-  router.push("order/create/unknown");
+  router.push({ name: "order-type", params: { type: "noset" } });
 
 const blogs = ref<Blogs[]>();
 

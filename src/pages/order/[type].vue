@@ -6,23 +6,23 @@
       :style="`--width-progress-bar: ${progressBarWidth}%`"
     ></div>
     <div class="max-w-1366 w-full grow flex items-center">
-      <OrderFirstStep />
-    </div>
-    <!-- <form class="max-w-1366 w-full p-4" @submit.prevent="">
-      <div class="w-full mb-8">
-        <h1 class="mb-4">ثبت سفارش</h1>
-        <p>{{ description }}</p>
-      </div>
-      <div class="flex flex-col items-center" v-if="step == 1">
-        <img
-          class="mb-4 w-full max-w-sm"
-          src="~/assets/images/cards/black.png"
-          alt="card"
-        />
-        <div class="w-full flex flex-wrap">
+      <OrderFirstStep
+        v-if="step === 1"
+        v-model="btc_amount"
+        :final-price="+finalPrice"
+      />
+      <div
+        v-if="step === 2"
+        class="w-full h-full rounded-xl flex flex-col items-center"
+      >
+        <div class="w-full px-4 my-4">
+          <h1>اطلاعات پایه</h1>
+          <p>لظفا اطلاعات پستی و کارت را وارد کنید</p>
+        </div>
+        <div class="w-full flex flex-wrap px-4">
           <div class="w-1/2 md:pl-4 max-md:w-full">
             <input
-              v-model="model.phone"
+              v-model="model.card.owner_phone_number"
               type="tel"
               name="phone"
               pattern="[0][9][0-9]{9}"
@@ -35,25 +35,46 @@
               oninput="this.setCustomValidity('')"
             />
           </div>
-          <div class="w-1/2 max-md:mt-4 max-md:w-full flex btc-input-container">
-            <button @click.prevent="increase" class="btc-secondary-button">
-              <span class="icon-plus text-primary"></span>
-            </button>
-            <input
-              v-model="model.price"
-              dir="rtl"
-              type="text"
-              name="fullname"
-              id="fullname"
-              placeholder="مبلغ خرید"
-              aria-label="مبلغ خرید"
-              class="px-4 w-full"
+          <div class="w-1/2 max-md:w-full">
+            <BaseSelectbar
+              v-model="model.address_id"
+              class="mt-4"
+              :label="'آدرس را انتخاب کنید'"
+              :options="addresses"
             />
-            <button @click.prevent="descrease" class="btc-secondary-button">
-              <span class="icon-minus text-primary"></span>
-            </button>
+          </div>
+          <div class="w-1/2 md:pl-4 max-md:w-full">
+            <input
+              v-model="model.receiver_name"
+              type="tel"
+              name="phone"
+              pattern="[0][9][0-9]{9}"
+              id="phone"
+              placeholder="نام گیرنده"
+              aria-label="نام گیرنده"
+              class="btc-text-field w-full mt-4"
+              required
+              oninvalid="this.setCustomValidity('لطفا نام را با فرمت درست وارد کنید')"
+              oninput="this.setCustomValidity('')"
+            />
+          </div>
+          <div class="w-1/2 max-md:w-full">
+            <input
+              v-model="model.receiver_phone_number"
+              type="tel"
+              name="phone"
+              pattern="[0][9][0-9]{9}"
+              id="phone"
+              placeholder="شماره گیرنده"
+              aria-label="شماره گیرنده"
+              class="btc-text-field w-full mt-4"
+              required
+              oninvalid="this.setCustomValidity('لطفا شماره تماس را با فرمت درست وارد کنید')"
+              oninput="this.setCustomValidity('')"
+            />
           </div>
           <textarea
+            v-model="model.card.message"
             dir="rtl"
             name="message"
             id="message"
@@ -64,81 +85,61 @@
           ></textarea>
         </div>
       </div>
-      <div class="w-full flex flex-wrap" v-if="step == 2">
-        <textarea
-          dir="rtl"
-          name="message"
-          id="message"
-          rows="5"
-          placeholder="آدرس کامل"
-          aria-label="پیام"
-          class="btc-textarea w-full mb-4"
-          required
-          oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
-          oninput="this.setCustomValidity('')"
-        ></textarea>
-        <div class="w-1/2 max-md:mt-4 max-md:w-full">
-          <input
-            v-model="model.receiverName"
-            dir="rtl"
-            type="text"
-            name="fullname"
-            id="fullname"
-            placeholder="نام تحویل گیرنده"
-            aria-label="نام تحویل گیرنده"
-            class="btc-text-field w-full"
-            required
-            oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
-            oninput="this.setCustomValidity('')"
-          />
-        </div>
-        <input
-          v-model="model.receiverPhone"
-          dir="rtl"
-          type="text"
-          name="fullname"
-          id="fullname"
-          placeholder="شماره تماس تحویل گیرنده"
-          aria-label="شماره تماس تحویل گیرنده"
-          class="btc-text-field w-full mt-4"
-          required
-          oninvalid="this.setCustomValidity('این فیلد نمی تواند خالی باشد')"
-          oninput="this.setCustomValidity('')"
-        />
-      </div>
-      <table class="table shadow" v-if="step == 3">
-        <tr v-for="(value, key, index) in model" :key="index">
-          <th>{{ translateKey(key) }}</th>
-          <td>{{ value }}</td>
-        </tr>
-      </table>
-      <div class="w-full flex justify-end mt-8">
-        <button
-          v-if="step !== 1"
-          @click="goToPreviousStep"
-          class="btc-secondary-button ml-4"
-        >
-          مرحله قبلی
-        </button>
-        <button @click="goToNextStep" class="btc-primary-button">
-          {{ step !== 4 ? "مرحله بعدی" : "پرداخت نهایی" }}
-        </button>
-      </div>
-    </form> -->
+      <OrderFinalStep
+        v-if="step === 3"
+        :data="model"
+        :address="asdsda"
+        :final-price="+finalPrice"
+      />
+    </div>
+    <div class="max-w-1366 grow p-4 w-full flex justify-end items-end">
+      <button
+        v-if="step !== 1"
+        @click="goToPreviousStep"
+        class="btc-secondary-button ml-4"
+      >
+        مرحله قبلی
+      </button>
+      <div class="btc-spacer" />
+      <button @click="goToNextStep" class="btc-primary-button">
+        {{ step !== 3 ? "مرحله بعدی" : "پرداخت نهایی" }}
+      </button>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { orderDetailsModel } from "../../../models/order-details.model";
-import { translateKey } from "~/composable/helpers/others";
+import Order from "@/models/order";
+import { useGetPrice } from "@/api/order";
+import { useGetAddress } from "~~/src/api/address";
+import { Address } from "cluster";
+import { useAuth } from "~~/src/composable/states/auth";
+import { useModal } from "~~/src/composable/states/snackbar";
 
-const model = reactive<orderDetailsModel>({
-  phone: "",
-  price: 0,
-  message: "",
-  address: "",
-  receiverName: "",
-  receiverPhone: "",
+const baseInfo = ref<Order>();
+const btc_amount = ref<number>(0.5);
+const model = reactive<Order>({
+  receiver_name: null,
+  receiver_phone_number: null,
+  address_id: null,
+  card: {
+    owner_phone_number: null,
+    btc_amount: btc_amount.value,
+    message: null,
+  },
 });
+
+const dynamicRevenue = ref<number>(0);
+const staticRevenue = ref<number>(0);
+const btc = ref<number>(0);
+const fee = ref<number>(0);
+const revenue = computed(
+  (): number =>
+    btc_amount.value * btc.value * dynamicRevenue.value + staticRevenue.value
+);
+
+const finalPrice = computed((): string =>
+  (revenue.value + btc_amount.value * btc.value + fee.value).toFixed(0)
+);
 
 const progress = ref<HTMLDivElement>();
 const baseValue = 50;
@@ -148,20 +149,27 @@ const goToPreviousStep = (): void => {
     progressBarWidth.value -= baseValue;
   }
 };
-const goToNextStep = (): void => {
-  if (progressBarWidth.value < 99) {
-    progressBarWidth.value += baseValue;
-  }
-};
+
 const step = computed((): number => progressBarWidth.value / baseValue + 1);
+const isLoggedIn = useAuth();
+const addresses = ref<Address[]>();
 
-const description = computed((): string =>
-  step.value == 3
-    ? "لطفا اطلاعات زیر را بررسی و در صورت عدم وجود خطا روی دکمه پرداخت نهایی کلیک کنید"
-    : "لطفا فرم زیر را کامل کنید سپس روی دکمه ادامه کلیک کنید"
-);
+useGetPrice().then((response) => {
+  dynamicRevenue.value = response.dynamic_revenue;
+  staticRevenue.value = response.static_revenue;
+  fee.value = response.fee;
+  btc.value = response.btc;
+});
+const getAddresses = () =>
+  useGetAddress().then((response) => {
+    addresses.value = response;
+  });
 
-const increase = () => model.price + 0.1;
-const descrease = () => model.price - 0.1;
+const goToNextStep = (): void => {
+  if (!isLoggedIn.value) useModal().value = true;
+  else if (progressBarWidth.value < 99 && isLoggedIn)
+    progressBarWidth.value += baseValue;
+  if (step.value === 2) getAddresses();
+};
 </script>
 <style lang="scss" module="TheCreateOrder"></style>

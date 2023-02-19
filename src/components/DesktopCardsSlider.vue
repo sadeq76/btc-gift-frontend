@@ -58,9 +58,10 @@ const next = (event) => {
       }
     });
   } else {
-    router.push(
-      `order/create/${event.target.getAttribute("alt").split(" ")[0]}`
-    );
+    router.push({
+      name: "order-type",
+      params: { type: event.target.getAttribute("alt").split(" ")[0] },
+    });
   }
 };
 </script>

@@ -1,15 +1,26 @@
-<script></script>
+<script setup lang="ts">
+const props = defineProps({
+  modelValue: Number,
+});
+const emit = defineEmits<{
+  (e: "update:modelValue", value: number): void;
+}>();
+
+const slider = ref<HTMLElement>();
+</script>
 
 <template>
   <div class="w-full">
     <input
+      ref="slider"
       :class="baseSlider.bar"
+      :value="props.modelValue"
+      @input="emit('update:modelValue', $event.target.value)"
       class="w-full h-2 border-none outline-none"
       type="range"
       min="0"
       max="1"
-      step=".01"
-      value=".5"
+      step=".0001"
       list="volsettings"
     />
     <datalist id="volsettings">
@@ -32,34 +43,39 @@
 }
 
 .bar::-webkit-slider-runnable-track {
-  background: #053a5f;
-  height: 1rem;
+  background: rgb(var(--color-test));
+  height: 0.5rem;
+  border-radius: 200rem;
 }
 
-/******** Firefox ********/
 .bar::-moz-range-track {
-  background: #053a5f;
-  height: 1rem;
+  background: rgb(var(--color-test));
+  height: 0.5rem;
+  border-radius: 200rem;
 }
 
 /***** Thumb Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 .bar::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  margin-top: -12px; /* Centers thumb on the track */
-  background-color: #5cd5eb;
+  width: 2rem;
   height: 2rem;
-  width: 1rem;
+  border: 0;
+  cursor: pointer;
+  background-color: rgb(var(--color-primary));
+  border-radius: 50%;
+  transform: translateY(-40%);
 }
 
 /***** Firefox *****/
 .bar::-moz-range-thumb {
-  border: none; /*Removes extra border that FF applies*/
-  border-radius: 0; /*Removes default border-radius that FF applies*/
-  background-color: #5cd5eb;
+  width: 2rem;
   height: 2rem;
-  width: 1rem;
+  cursor: pointer;
+  background-color: rgb(var(--color-primary));
+  border-radius: 50%;
+  transform: translateY(-40%);
 }
 
 .bar:focus {

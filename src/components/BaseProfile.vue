@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import ProfileActions from "@/models/profile-actions.model";
 import { useLogout } from "@/composable/states/auth";
@@ -11,7 +10,7 @@ const actions: ProfileActions[] = [
   { icon: "transaction", title: "تراکنش ها", path: "profile-transactions" },
 ];
 
-const profile = computed(() => JSON.parse(localStorage.getItem("profile")));
+const profile = JSON.parse(localStorage.getItem("profile"));
 </script>
 
 <template>
@@ -36,31 +35,12 @@ const profile = computed(() => JSON.parse(localStorage.getItem("profile")));
         v-for="(action, index) in actions"
         :key="index"
         :to="{ name: action.path }"
-        class="
-          w-full
-          border-primary
-          rounded
-          p-4
-          mt-4
-          overflow-hidden
-          shadow
-          hover:shadow hover:shadow-primary/60
-          bg-background
-          flex
-          items-center
-          justify-between
-        "
+        class="w-full border-primary rounded p-4 mt-4 overflow-hidden shadow hover:shadow hover:shadow-primary/60 bg-background flex items-center justify-between"
       >
         <div class="flex items-center">
           <!-- <span :class="`icon-${action.icon} text-primary text-md`"></span> -->
           <p
-            class="
-              mr-2
-              line-height-normal
-              text-center
-              whitespace-nowrap
-              font-bold
-            "
+            class="mr-2 line-height-normal text-center whitespace-nowrap font-bold"
           >
             {{ action.title }}
           </p>

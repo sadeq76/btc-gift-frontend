@@ -64,7 +64,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { orderDetailsModel } from "~~/src/models/order-details.model";
+import { Order } from "@/models/order";
 import { convertToRls } from "@/composable/helpers/numbers";
 import {
   translateKey,
@@ -78,7 +78,7 @@ import { useLogout } from "@/composable/states/auth";
 
 const logoutUser = () => useLogout();
 
-let orders = ref<orderDetailsModel[]>();
+let orders = ref<Order[]>();
 
 onMounted(() => {
   fetchData({
@@ -90,5 +90,4 @@ onMounted(() => {
   }).then((res) => (orders.value = res));
 });
 </script>
-<style lang="scss" module="TheOrdersList">
-</style>
+<style lang="scss" module="TheOrdersList"></style>
