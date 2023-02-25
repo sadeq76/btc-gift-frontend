@@ -50,6 +50,14 @@ const config = {
             transform: "translateX(0%)",
           },
         },
+        "move-up": {
+          from: {
+            transform: "translateY(100%)",
+          },
+          to: {
+            transform: "translateY(0%)",
+          },
+        },
         zoom: {
           from: {
             transform: "scale(.5) translateY(-50%)",
@@ -99,6 +107,8 @@ const config = {
       bounce: "bounce 1s infinite",
       "move-in": "move 0.2s forwards ease-in",
       "move-out": "move 0.2s forwards ease-in reverse",
+      "move-up": "move-up 0.2s forwards ease-in",
+      "move-down": "move-up 0.2s forwards ease-in reverse",
       "zoom-in": "zoom 0.2s forwards ease-in",
       "zoom-out": "zoom 0.2s forwards ease-in reverse",
       gradient: "gradient 1s linear forwards infinite",

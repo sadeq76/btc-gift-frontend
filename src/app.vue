@@ -3,14 +3,9 @@
     <NuxtLayout />
     <NuxtLoadingIndicator color="orange" />
     <NuxtPage />
-    <transition
-      enter-active-class="animate-zoom-in"
-      leave-active-class="animate-zoom-out"
-    >
-      <BaseModal :dialog="modalIsOpen" @close="closeModal">
-        <LoginModal></LoginModal>
-      </BaseModal>
-    </transition>
+    <BaseModal :dialog="modalIsOpen" @close="closeModal">
+      <LoginModal></LoginModal>
+    </BaseModal>
     <transition
       enter-active-class="animate-zoom-in"
       leave-active-class="animate-zoom-out"

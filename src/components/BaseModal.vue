@@ -29,29 +29,30 @@ watch(
 </script>
 
 <template>
-  <div
-    v-if="props.dialog"
-    :class="[
-      BaseModal.container,
-      'fixed p-8 top-1/2 -translate-y-1/2 rounded-md z-50 shadow bg-background flex flex-col',
-    ]"
+  <transition
+    enter-active-class="animate-move-up"
+    leave-active-class="animate-move-down"
   >
-    <span
-      @click="closeModal"
-      class="icon-close absolute top-4 left-4 text-text/40"
-    ></span>
-    <slot></slot>
-    <!-- TODO: Add actions -->
-    <!-- <div class="grow min-h-fit w-full flex items-end">
-      <slot class="fixed top-0" name="actions"></slot>
-    </div> -->
-    <teleport to="#__nuxt">
-      <div
+    <div
+      v-if="props.dialog"
+      :class="[
+        BaseModal.container,
+        'fixed p-8 max-md:bottom-0 md:top-1/2 md:-translate-y-1/2 rounded-md z-50 shadow bg-background flex flex-col',
+      ]"
+    >
+      <span
         @click="closeModal"
-        class="fixed z-40 left-0 right-0 top-0 bottom-0 bg-overlay"
-      ></div>
-    </teleport>
-  </div>
+        class="icon-close absolute top-4 left-4 text-text/40"
+      ></span>
+      <slot></slot>
+      <teleport to="#__nuxt">
+        <div
+          @click="closeModal"
+          class="fixed z-40 left-0 right-0 top-0 bottom-0 bg-overlay"
+        ></div>
+      </teleport>
+    </div>
+  </transition>
 </template>
 
 <style lang="scss" module="BaseModal">
@@ -75,10 +76,10 @@ watch(
       width: 100%;
       min-width: 100%;
       max-width: 100%;
-      height: 100%;
-      min-height: 100%;
-      max-height: 100%;
+      height: fit-content;
       border-radius: 0;
+      border-top-right-radius: 1rem;
+      border-top-left-radius: 1rem;
     }
   }
 }

@@ -23,14 +23,7 @@ await useGetBlog(useRoute().params.id).then((response) => {
       <div
         class="btc-card md:sticky top-18 w-1/3 max-md:w-full h-fit md:ml-4 max-md:mb-4"
       >
-        <h2>لیست مطالب</h2>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-        </ul>
+        <BlogSections :sections="null" />
       </div>
       <div class="btc-card w-2/3 max-md:w-full h-fit">
         <h1>{{ blog?.title }}</h1>

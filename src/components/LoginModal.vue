@@ -3,7 +3,7 @@
     <img class="w-12" src="~/assets/images/logo.png" alt="btc gift" />
     <form
       id="login-form"
-      class="mt-4 w-full flex flex-col"
+      class="my-4 w-full flex flex-col"
       @submit.prevent="submit"
     >
       <h3>ورود به سیستم</h3>
